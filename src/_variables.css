@@ -1,0 +1,28 @@
+:root {
+  /* font settings */
+  --font-size-headline: 30px;
+  --font-weight-headline: 700;
+
+  --font-size-subhead: 20px;
+  --font-weight-subhead: 700;
+
+  --font-size-body: 16px;
+  --font-weight-body: 500;
+
+  --font-size-caption: 14px;
+  --font-weight-caption: 400;
+
+  /* colors */
+  --color-primary-light: #261C00;
+  --color-secondary-light: #BFBFBF;
+  --color-background-light: #FFFFFF;
+
+  --color-primary-dark: #FCFBF7;
+  --color-secondary-dark: #918F8A;
+  --color-background-dark: #120C01;
+
+  --color-accent: #F4B000;
+
+  /* emoji */
+  --emoji-height: 32px;
+}
