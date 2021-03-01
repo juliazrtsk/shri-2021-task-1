@@ -1,5 +1,9 @@
 import './_variables.css';
 import './index.css';
 
-
-document.getElementById('root').append('Stories');
+window.onload = function () {
+  const params = new URLSearchParams(window.location.search);
+  const slide = params.get('slide') || 1;
+  const theme = params.get('theme') || 'light';
+  console.log(`slide: ${slide}; theme: ${theme}`);
+}
