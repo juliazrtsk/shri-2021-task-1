@@ -30,3 +30,10 @@
 .slide__content {
   flex-grow: 1;
 }
+
+@media (orientation: portrait) {
+  .slide__header {
+    padding: 20px 52px 0 24px;
+    text-align: unset;
+  }
+}
