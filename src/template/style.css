@@ -1,0 +1,32 @@
+.slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-dark);
+}
+
+.slide__header {
+  box-sizing: border-box;
+  padding: 20px 52px 0;
+  text-align: center;
+}
+
+.slide__title {
+  margin: 0;
+  color: var(--color-primary-dark);
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 32px;
+}
+
+.slide__subtitle {
+  margin: 8px 0 0;
+  color: var(--color-secondary-dark);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.slide__content {
+  flex-grow: 1;
+}
