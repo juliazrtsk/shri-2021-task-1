@@ -74,7 +74,8 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimize: true,
+    // Temporary turned off
+    minimize: false,
     minimizer: [
       `...`,
       new CssMinimizerPlugin(),
