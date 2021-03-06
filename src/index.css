@@ -5,7 +5,8 @@
        url('~fonts/Roboto-Bold.ttf');
 }
 
-body {
+html, body {
   font-family: Roboto, sans-serif;
   font-style: normal;
+  height: 100vh;
 }
