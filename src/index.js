@@ -6,6 +6,8 @@ import './index.css';
 
 import * as data from '../data/data.json';
 
+window.renderTemplate = renderTemplate;
+
 window.onload = function () {
   const params = new URLSearchParams(window.location.search);
   const slide = params.get('slide') || 1;
