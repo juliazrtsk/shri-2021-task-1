@@ -31,7 +31,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-secondary_dark);
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
@@ -50,7 +50,7 @@
 
 .leaders__name {
   margin-top: 6px;
-  color: var(--color-primary-dark);
+  color: var(--color-primary_dark);
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
@@ -58,7 +58,7 @@
 
 .leaders__commits {
   margin-top: 4px;
-  color: var(--color-secondary-light);
+  color: var(--color-secondary_light);
   font-size: 14px;
   line-height: 16px;
 }
@@ -67,7 +67,7 @@
   flex-grow: 1;
   padding-top: 18px;
   border-radius: 6px 6px 0 0;
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-secondary_dark);
 }
 
 .leaders__column_winner {
@@ -75,7 +75,7 @@
 }
 
 .leaders__prize-place {
-  color: var(--color-primary-dark);
+  color: var(--color-primary_dark);
   font-weight: 700;
   font-size: 30px;
   line-height: 32px;

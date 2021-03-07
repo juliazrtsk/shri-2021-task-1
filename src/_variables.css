@@ -13,13 +13,13 @@
   --font-weight-caption: 400;
 
   /* colors */
-  --color-primary-light: #261C00;
-  --color-secondary-light: #BFBFBF;
-  --color-background-light: #FFFFFF;
+  --color-primary_light: #261C00;
+  --color-secondary_light: #BFBFBF;
+  --color-background_light: #FFFFFF;
 
-  --color-primary-dark: #FCFBF7;
-  --color-secondary-dark: #918F8A;
-  --color-background-dark: #120C01;
+  --color-primary_dark: #FCFBF7;
+  --color-secondary_dark: #918F8A;
+  --color-background_dark: #120C01;
 
   --color-accent: #F4B000;
 
