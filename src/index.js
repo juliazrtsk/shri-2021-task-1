@@ -8,7 +8,7 @@ import * as data from '../data/data.json';
 
 window.renderTemplate = renderTemplate;
 
-window.onload = function () {
+window.onload = async function () {
   const params = new URLSearchParams(window.location.search);
   const slide = params.get('slide') || 1;
   const theme = params.get('theme') || 'light';
@@ -16,7 +16,7 @@ window.onload = function () {
   console.log(data[slide - 1]);
 
   const slideData = data[slide - 1];
-  const slideRendered = renderTemplate(slideData.alias, slideData.data);
+  const slideRendered = await window.renderTemplate(slideData.alias, slideData.data);
   const root = document.getElementById('root');
   root.insertAdjacentHTML('beforeend', slideRendered);
 }
