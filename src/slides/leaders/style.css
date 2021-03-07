@@ -80,3 +80,28 @@
   font-size: 30px;
   line-height: 32px;
 }
+
+.theme_light .leaders__avatar {
+  -webkit-filter: unset;
+  filter: unset;
+}
+
+.theme_light .leaders__name {
+  color: var(--color-primary_light);
+}
+
+.theme_light .leaders__commits {
+  color: var(--color-secondary_light);
+}
+
+.theme_light .leaders__column {
+  background-color: var(--color-secondary_light);
+}
+
+.theme_light .leaders__prize-place {
+  color: var(--color-primary_light);
+}
+
+.theme_light .leaders__column_winner {
+  background-color: var(--color-accent);
+}
