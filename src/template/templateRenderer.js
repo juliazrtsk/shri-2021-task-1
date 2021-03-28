@@ -1,5 +1,6 @@
 import leadersSlide from '../slides/leaders/leadersSlide';
 import voteSlide from '../slides/vote/voteSlide';
+import activitySlide from '../slides/activity/activitySlide';
 
 import './style.css';
 
@@ -16,7 +17,7 @@ const slideMap = {
   [aliases.vote]: (data) => voteSlide(data),
   [aliases.chart]: (data) => {},
   [aliases.diagram]: (data) => {},
-  [aliases.activity]: (data) => {},
+  [aliases.activity]: (data) => activitySlide(data),
 };
 
 export async function renderTemplate (alias, data) {

@@ -1,0 +1,24 @@
+.arrow-button {
+  width: 64px;
+  height: 64px;
+}
+
+.arrow-button:hover {
+  background-image: url("~images/button-hover-dark.svg");
+}
+
+.arrow-button__direction_down {
+  background-image: url("~images/button-dark.svg");
+}
+
+.arrow-button__direction_up {
+  background-image: url("~images/button-dark.svg");
+}
+
+.arrow-button:disabled {
+
+}
+
+.light_theme .arrow-button__direction_down {
+  background-image: url("~images/button-light.svg");
+}

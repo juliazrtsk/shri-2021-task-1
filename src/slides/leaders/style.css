@@ -4,6 +4,7 @@
   padding-top: 16px;
   box-sizing: border-box;
   height: 100%;
+  color: var(--color-primary_dark);
 }
 
 .leaders__user {
@@ -37,20 +38,16 @@
 }
 
 .leaders__emoji {
+  position: relative;
+  top: 10px;
   width: 32px;
   height: 32px;
   font-size: 32px;
   z-index: 1;
 }
 
-.leaders__emoji_winner {
-  position: relative;
-  top: 10px;
-}
-
 .leaders__name {
   margin-top: 6px;
-  color: var(--color-primary_dark);
   font-weight: 500;
   font-size: 16px;
   line-height: 18px;
@@ -75,7 +72,6 @@
 }
 
 .leaders__prize-place {
-  color: var(--color-primary_dark);
   font-weight: 700;
   font-size: 30px;
   line-height: 32px;
@@ -86,7 +82,7 @@
   filter: unset;
 }
 
-.theme_light .leaders__name {
+.theme_light .leaders {
   color: var(--color-primary_light);
 }
 
@@ -98,10 +94,7 @@
   background-color: var(--color-secondary_light);
 }
 
-.theme_light .leaders__prize-place {
-  color: var(--color-primary_light);
-}
-
 .theme_light .leaders__column_winner {
   background-color: var(--color-accent);
 }
+

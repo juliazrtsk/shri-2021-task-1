@@ -52,7 +52,7 @@ const renderUserInfo = async (user, emoji = '') => {
 
   return (`
     <div class="leaders__user-info">
-      <div class="leaders__emoji leaders__emoji_winner">${emoji}</div>
+      <div class="leaders__emoji">${emoji}</div>
       <img class="leaders__avatar" src="${avatarImg.default}" alt="${name}">
       <div class="leaders__name">${name}</div>
       <div class="leaders__commits">${valueText}</div>
