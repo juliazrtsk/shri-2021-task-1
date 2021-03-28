@@ -1,0 +1,48 @@
+.chart {
+  display: grid;
+  grid-template-rows: auto 40px;
+  grid-row-gap: 25px;
+  height: 100%;
+  padding: 33px 58px 24px;
+  box-sizing: border-box;
+}
+
+.chart__bars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chart__bar_active .bar__column {
+  background-color: var(--color-accent);
+}
+
+.chart__leaders {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 0 39px;
+}
+
+.chart__user {
+  position: relative;
+  margin-left: 16px;
+}
+
+.chart__user::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  content: '';
+  background-color: var(--color-secondary_dark);
+  opacity: 30%;
+}
+
+.chart__user:first-child {
+  margin-left: unset;
+}
+
+.chart__user:last-child::after {
+  display: none;
+}

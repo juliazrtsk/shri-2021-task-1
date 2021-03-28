@@ -2,13 +2,14 @@ import ReactDOMServer from 'react-dom/server';
 
 import LeadersSlide from 'src/slides/leaders/LeadersSlide';
 import VoteSlide from 'src/slides/vote/VoteSlide';
+import ChartSlide from 'src/slides/chart/ChartSlide';
 
 import { aliases } from 'src/constants/constants';
 
 const slideMap = {
   [aliases.leaders]: data => LeadersSlide(data),
   [aliases.vote]: data => VoteSlide(data),
-  [aliases.chart]: () => {},
+  [aliases.chart]: data => ChartSlide(data),
   [aliases.diagram]: () => {},
   [aliases.activity]: () => {},
 };
