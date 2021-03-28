@@ -31,6 +31,39 @@
   line-height: 16px;
 }
 
+.user-card_size_small {
+  display: grid;
+  height: 40px;
+  grid-template-columns: 40px auto;
+  grid-column-gap: 14px;
+  grid-template-areas:
+    "avatar name"
+    "avatar text";
+  text-align: left;
+}
+
+.user-card_size_small .avatar {
+  width: 40px;
+  height: 40px;
+  grid-area: avatar;
+  margin: 0;
+}
+
+.user-card_size_small .user-card__name,
+.user-card_size_small .user-card__text {
+  margin: 0;
+  word-spacing: unset;
+  display: block;
+}
+
+.user-card_size_small .user-card__name {
+  grid-area: name;
+}
+
+.user-card_size_small .user-card__text {
+  grid-area: text;
+}
+
 .theme_light .user-card__name {
   color: var(--color-primary_light);
 }

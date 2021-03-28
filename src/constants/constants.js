@@ -17,3 +17,8 @@ export const arrowButtonDirections = {
 };
 
 export const voteEmoji = '👍';
+
+export const userCardSizes = {
+  m: 'medium',
+  s: 'small',
+};
