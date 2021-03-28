@@ -7,8 +7,8 @@
     "node": "12.16.1"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --open",
-    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "build": "webpack --env production",
+    "start": "webpack serve --open --env development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,8 +22,13 @@
   },
   "homepage": "https://github.com/juliazrtsk/shri-2021-task-1#readme",
   "devDependencies": {
+    "@babel/core": "7.13.13",
+    "@babel/preset-env": "7.13.12",
+    "@babel/preset-react": "7.13.13",
+    "babel-loader": "8.2.2",
+    "classnames": "2.2.6",
     "clean-webpack-plugin": "3.0.0",
-    "cross-env": "7.0.3",
+    "copy-webpack-plugin": "8.1.0",
     "css-loader": "5.0.2",
     "css-minimizer-webpack-plugin": "1.2.0",
     "file-loader": "6.2.0",
@@ -34,6 +39,9 @@
     "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "normalize.css": "8.0.1"
+    "normalize.css": "8.0.1",
+    "prop-types": "15.7.2",
+    "react": "16.13.0",
+    "react-dom": "16.13.0"
   }
 }

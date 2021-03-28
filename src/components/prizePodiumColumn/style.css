@@ -1,0 +1,29 @@
+.prize-podium-column {
+  flex-grow: 1;
+  padding-top: 18px;
+  border-radius: 6px 6px 0 0;
+  background-color: var(--color-secondary_dark);
+}
+
+.prize-podium-column_winner {
+  background-color: var(--color-accent);
+}
+
+.prize-podium-column__place {
+  color: var(--color-primary_dark);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 32px;
+}
+
+.theme_light .prize-podium-column {
+  background-color: var(--color-secondary_light);
+}
+
+.theme_light .prize-podium-column_winner {
+  background-color: var(--color-accent);
+}
+
+.theme_light .prize-podium-column__place {
+  color: var(--color-primary_light);
+}

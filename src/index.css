@@ -10,3 +10,7 @@ html, body {
   font-style: normal;
   height: 100vh;
 }
+
+#root, .stories {
+  height: 100%;
+}
