@@ -14,7 +14,8 @@
 }
 
 .chart__bar_active .bar__column {
-  background-color: var(--color-accent);
+  background: radial-gradient(81.14% 100% at 50% 0%, #ffa300 0%, #2d1c00 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0 6px 15px rgba(255, 162, 0, 0.5);
 }
 
 .chart__leaders {
@@ -45,4 +46,9 @@
 
 .chart__user:last-child::after {
   display: none;
+}
+
+.theme_light .chart__bar_active .bar__column {
+  background: linear-gradient(180deg, #fff2d1 0.82%, #ffd66c 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 176, 57, 0.8);
 }
