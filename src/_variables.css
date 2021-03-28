@@ -2,26 +2,21 @@
   /* font settings: todo - remove if unused */
   --font-size-headline: 30px;
   --font-weight-headline: 700;
-
   --font-size-subhead: 20px;
   --font-weight-subhead: 700;
-
   --font-size-body: 16px;
   --font-weight-body: 500;
-
   --font-size-caption: 14px;
   --font-weight-caption: 400;
 
   /* colors */
-  --color-primary_light: #261C00;
-  --color-secondary_light: #BFBFBF;
-  --color-background_light: #FFFFFF;
-
-  --color-primary_dark: #FCFBF7;
-  --color-secondary_dark: #918F8A;
-  --color-background_dark: #120C01;
-
-  --color-accent: #F4B000;
+  --color-primary_light: #261c00;
+  --color-secondary_light: #bfbfbf;
+  --color-background_light: #fff;
+  --color-primary_dark: #fcfbf7;
+  --color-secondary_dark: #918f8a;
+  --color-background_dark: #120c01;
+  --color-accent: #f4b000;
 
   /* emoji */
   --emoji-height: 32px;

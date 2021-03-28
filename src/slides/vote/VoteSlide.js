@@ -6,12 +6,12 @@ import UserCard from 'src/components/userCard/UserCard';
 
 import './style.css';
 
-const VoteSlide = (props) => {
-  const { title, subtitle, offset, users, emoji } = props;
+const VoteSlide = props => {
+  const { title, subtitle, users, emoji } = props;
 
   const renderedUsers = users.map((user, index) => (
     <UserCard
-      className="vote__user"
+      className='vote__user'
       key={`vote_user_${index}`}
       user={user}
       emoji={emoji}
@@ -19,9 +19,7 @@ const VoteSlide = (props) => {
   ));
   return (
     <SlideLayout title={title} subtitle={subtitle}>
-      <div className="vote">
-        {renderedUsers}
-      </div>
+      <div className='vote'>{renderedUsers}</div>
     </SlideLayout>
   );
 };
@@ -31,12 +29,14 @@ VoteSlide.propTypes = {
   subtitle: PropTypes.string,
   offset: PropTypes.number,
   emoji: PropTypes.string,
-  users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    avatar: PropTypes.string,
-    valueText: PropTypes.string,
-  })),
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      avatar: PropTypes.string,
+      valueText: PropTypes.string,
+    })
+  ),
 };
 
 VoteSlide.defaultProps = {

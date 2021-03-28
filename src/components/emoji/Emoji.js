@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-const Emoji = (props) => {
+const Emoji = props => {
   const { className, symbol } = props;
-  return (
-    <div className={`emoji ${className}`}>
-      {symbol}
-    </div>
-  );
+  return <div className={`emoji ${className}`}>{symbol}</div>;
 };
 
 Emoji.propTypes = {

@@ -4,7 +4,7 @@ import renderTemplate from './templates/templateRenderer';
 
 import { themes } from 'src/constants/constants';
 
-const App = (props) => {
+const App = () => {
   const params = new URLSearchParams(window.location.search);
   const slide = params.get('slide') || 1;
   const theme = params.get('theme') || 'dark';
@@ -27,10 +27,11 @@ const App = (props) => {
   }, [slidesData]);
 
   return (
-    <div className={`stories ${themes[theme] || themes.dark}`}
-         dangerouslySetInnerHTML={{__html: slideMarkup}}
+    <div
+      className={`stories ${themes[theme] || themes.dark}`}
+      dangerouslySetInnerHTML={{ __html: slideMarkup }}
     />
-  )
-}
+  );
+};
 
 export default App;

@@ -1,16 +1,19 @@
 @font-face {
   font-family: 'Roboto';
-  src: url('~fonts/Roboto-Regular.ttf'),
-       url('~fonts/Roboto-Medium.ttf'),
-       url('~fonts/Roboto-Bold.ttf');
+  src:
+    url('~fonts/Roboto-Regular.ttf'),
+    url('~fonts/Roboto-Medium.ttf'),
+    url('~fonts/Roboto-Bold.ttf');
 }
 
-html, body {
+html,
+body {
   font-family: Roboto, sans-serif;
   font-style: normal;
   height: 100vh;
 }
 
-#root, .stories {
+#root,
+.stories {
   height: 100%;
 }
