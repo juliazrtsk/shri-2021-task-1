@@ -10,3 +10,10 @@ export const aliases = {
   diagram: 'diagram',
   activity: 'activity',
 };
+
+export const arrowButtonDirections = {
+  down: 'down',
+  up: 'up',
+};
+
+export const voteEmoji = '👍';
