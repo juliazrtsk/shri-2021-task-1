@@ -31,3 +31,11 @@
 .diagram__categories {
   padding-left: 40px;
 }
+
+.theme_light .diagram__total {
+  color: var(--color-primary_light);
+}
+
+.theme_light .diagram__diff {
+  color: var(--color-secondary_light);
+}
