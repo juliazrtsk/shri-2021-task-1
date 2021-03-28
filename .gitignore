@@ -1,5 +1,6 @@
 .idea
-.eslintrc.json
 
 node_modules
 build
+
+TODO.md

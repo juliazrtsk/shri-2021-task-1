@@ -1,0 +1,13 @@
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--color-secondary_dark);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.theme_light .avatar {
+  -webkit-filter: unset;
+  filter: unset;
+}
