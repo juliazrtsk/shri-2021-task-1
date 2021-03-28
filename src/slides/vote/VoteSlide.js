@@ -1,25 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import SlideLayout from 'src/templates/slideLayout/SlideLayout';
 import UserCard from 'src/components/userCard/UserCard';
+import ArrowButton from 'src/components/arrowButton/ArrowButton';
+
+import {
+  arrowButtonDirections as directions,
+  voteEmoji,
+} from 'src/constants/constants';
 
 import './style.css';
 
 const VoteSlide = props => {
-  const { title, subtitle, users, emoji } = props;
+  const { title, subtitle, users } = props;
 
-  const renderedUsers = users.map((user, index) => (
+  const renderedUsers = users.slice(0, 6).map((
+    user,
+    index // Todo: use offset?
+  ) => (
     <UserCard
-      className='vote__user'
+      className={cn('vote__user', {
+        vote__user_selected: user.id === 4, // Todo: make it only for selected user
+      })}
       key={`vote_user_${index}`}
       user={user}
-      emoji={emoji}
+      emoji={user.id === 4 && voteEmoji} // Todo: make it only for selected user
+      showDetails={false}
     />
   ));
+
+  const renderButton = dir => (
+    <ArrowButton
+      className={`vote__button vote__button_${dir}`}
+      direction={dir}
+    />
+  );
+
   return (
     <SlideLayout title={title} subtitle={subtitle}>
-      <div className='vote'>{renderedUsers}</div>
+      <div className='vote'>
+        {renderButton(directions.up)}
+        {renderedUsers}
+        {renderButton(directions.down)}
+      </div>
     </SlideLayout>
   );
 };

@@ -1,6 +1,11 @@
 .vote {
   display: grid;
-  padding-top: 16px;
+  grid-template: auto auto / 104px 104px 64px 104px 104px;
+  grid-column-gap: 31px;
+  grid-row-gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 32px 5px;
   box-sizing: border-box;
   height: 100%;
   color: var(--color-primary_dark);
@@ -12,7 +17,43 @@
   box-sizing: border-box;
   padding: 20px 4px 16px;
   border-radius: 6px;
+}
+
+.vote__user .user-card__avatar {
+  margin: 0;
+}
+
+.vote__user .user-card__emoji {
+  top: -5px;
+}
+
+.vote__user:first-of-type {
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+
+.vote__user:nth-child(5) {
+  grid-column: 5;
+  grid-row: 1 / -1;
+}
+
+.vote__user:hover {
+  transition: background-color ease 0.2s;
   background-color: var(--color-secondary_dark);
+}
+
+.vote__user_selected {
+  background-color: var(--color-accent);
+}
+
+.vote__button_up {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.vote__button_down {
+  grid-column: 3;
+  grid-row: 2;
 }
 
 .theme_light .vote {

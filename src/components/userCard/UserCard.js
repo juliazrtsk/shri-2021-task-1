@@ -7,7 +7,7 @@ import Emoji from 'src/components/emoji/Emoji';
 import './style.css';
 
 const UserCard = props => {
-  const { className, user, emoji } = props;
+  const { className, user, emoji, showDetails } = props;
 
   const [avatar, setAvatar] = useState(null);
 
@@ -23,7 +23,7 @@ const UserCard = props => {
       {emoji && <Emoji className='user-card__emoji' symbol={emoji} />}
       <Avatar className='user-card__avatar' src={avatar} alt={avatar} />
       <div className='user-card__name'>{user.name}</div>
-      <div className='user-card__text'>{user.valueText}</div>
+      {showDetails && <div className='user-card__text'>{user.valueText}</div>}
     </div>
   );
 };
@@ -37,11 +37,13 @@ UserCard.propTypes = {
     valueText: PropTypes.string,
   }).isRequired,
   emoji: PropTypes.string,
+  showDetails: PropTypes.bool,
 };
 
 UserCard.defaultProps = {
   className: '',
   emoji: '',
+  showDetails: true,
 };
 
 export default UserCard;
