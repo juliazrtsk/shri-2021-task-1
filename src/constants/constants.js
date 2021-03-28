@@ -22,3 +22,10 @@ export const userCardSizes = {
   m: 'medium',
   s: 'small',
 };
+
+export const sprintCommitsCategory = {
+  xl: 'extra-large',
+  l: 'large',
+  m: 'medium',
+  s: 'small',
+};
