@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "eslint:recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "babel",
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}

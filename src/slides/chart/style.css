@@ -1,0 +1,54 @@
+.chart {
+  display: grid;
+  grid-template-rows: auto 40px;
+  grid-row-gap: 25px;
+  height: 100%;
+  padding: 33px 58px 24px;
+  box-sizing: border-box;
+}
+
+.chart__bars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chart__bar_active .bar__column {
+  background: radial-gradient(81.14% 100% at 50% 0%, #ffa300 0%, #2d1c00 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0 6px 15px rgba(255, 162, 0, 0.5);
+}
+
+.chart__leaders {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 0 39px;
+}
+
+.chart__user {
+  position: relative;
+  margin-left: 16px;
+}
+
+.chart__user::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  content: '';
+  background-color: var(--color-secondary_dark);
+  opacity: 30%;
+}
+
+.chart__user:first-child {
+  margin-left: unset;
+}
+
+.chart__user:last-child::after {
+  display: none;
+}
+
+.theme_light .chart__bar_active .bar__column {
+  background: linear-gradient(180deg, #fff2d1 0.82%, #ffd66c 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 176, 57, 0.8);
+}
