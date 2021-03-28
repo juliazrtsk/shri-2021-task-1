@@ -1,0 +1,33 @@
+.diagram {
+  display: grid;
+  grid-template-columns: 240px auto;
+  align-items: center;
+  height: 100%;
+  padding: 29px 42px;
+  box-sizing: border-box;
+}
+
+.diagram__round-chart {
+  width: 240px;
+  height: 240px;
+}
+
+.diagram__total {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--color-primary_dark);
+}
+
+.diagram__diff {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: var(--color-secondary_dark);
+}
+
+.diagram__categories {
+  padding-left: 40px;
+}
