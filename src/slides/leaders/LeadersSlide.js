@@ -5,12 +5,22 @@ import SlideLayout from 'src/templates/slideLayout/SlideLayout';
 import UserCard from 'src/components/userCard/UserCard';
 import PrizePodiumColumn from 'src/components/prizePodiumColumn/PrizePodiumColumn';
 
+import { voteEmoji } from 'src/constants/constants';
+
 import './style.css';
 
 const LeadersSlide = props => {
-  const { title, subtitle, emoji, users } = props;
+  const { title, subtitle, emoji, users, selectedUserId } = props;
 
   const renderedUsers = users.map((user, index) => {
+    let userEmoji = null;
+    if (user.id === selectedUserId) {
+      userEmoji = voteEmoji;
+    } else {
+      if (index === 0) {
+        userEmoji = emoji;
+      }
+    }
     return (
       <div
         className={`leaders__user leaders__user_place_${index + 1}`}
@@ -19,7 +29,7 @@ const LeadersSlide = props => {
         <UserCard
           className='leaders__user-info'
           user={user}
-          emoji={index === 0 ? emoji : null}
+          emoji={userEmoji}
         />
         <PrizePodiumColumn place={index + 1} isWinner={index === 0} />
       </div>
