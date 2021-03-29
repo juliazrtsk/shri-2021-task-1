@@ -1,15 +1,18 @@
 .diagram {
   display: grid;
-  grid-template-columns: 240px auto;
+  grid-template-columns: 1fr 1fr; /* Todo: fix according to spec */
+  grid-column-gap: 40px;
   align-items: center;
   height: 100%;
   padding: 29px 42px;
   box-sizing: border-box;
 }
 
-.diagram__round-chart {
-  width: 240px;
-  height: 240px;
+.diagram__round-chart {}
+
+.diagram__stats {
+  margin: auto;
+  max-width: 120px;
 }
 
 .diagram__total {
@@ -29,7 +32,7 @@
 }
 
 .diagram__categories {
-  padding-left: 40px;
+  width: 100%;
 }
 
 .theme_light .diagram__total {

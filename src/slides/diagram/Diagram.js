@@ -32,8 +32,10 @@ const Diagram = props => {
     <SlideLayout title={title} subtitle={subtitle}>
       <div className='diagram'>
         <div className='diagram__round-chart'>
-          <div className='diagram__total'>{totalText}</div>
-          <div className='diagram__diff'>{differenceText}</div>
+          <div className='diagram__stats'>
+            <div className='diagram__total'>{totalText}</div>
+            <div className='diagram__diff'>{differenceText}</div>
+          </div>
         </div>
         <div className='diagram__categories'>{renderedCategories}</div>
       </div>
