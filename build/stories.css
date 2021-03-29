@@ -707,6 +707,10 @@
   height: 112px;
 }
 
+.activity__bar {
+  width: 34px;
+}
+
 .activity__day-row {
   position: absolute;
   display: grid;

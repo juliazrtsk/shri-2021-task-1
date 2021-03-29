@@ -82,6 +82,7 @@ const Activity = props => {
       return (
         <img
           key={`activity_bar_${index}`}
+          className='activity__bar'
           src={bars[`${type}_${theme}`]}
           alt={type}
         />

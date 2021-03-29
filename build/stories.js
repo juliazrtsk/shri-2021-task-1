@@ -1589,6 +1589,7 @@ const Activity = props => {
 
     return /*#__PURE__*/react.createElement("img", {
       key: `activity_bar_${index}`,
+      className: "activity__bar",
       src: bars[`${type}_${theme}`],
       alt: type
     });
