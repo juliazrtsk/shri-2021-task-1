@@ -954,6 +954,10 @@ const sprintCommitsCategory = {
   m: 'medium',
   s: 'small'
 };
+const screenOrientation = {
+  vertical: 'vertical',
+  horizontal: 'horizontal'
+};
 ;// CONCATENATED MODULE: ./src/components/userCard/UserCard.js
 
 
@@ -1051,21 +1055,33 @@ PrizePodiumColumn.defaultProps = {
 
 
 
+
 const LeadersSlide = props => {
   const {
     title,
     subtitle,
     emoji,
-    users
+    users,
+    selectedUserId
   } = props;
   const renderedUsers = users.map((user, index) => {
+    let userEmoji = null;
+
+    if (user.id === selectedUserId) {
+      userEmoji = voteEmoji;
+    } else {
+      if (index === 0) {
+        userEmoji = emoji;
+      }
+    }
+
     return /*#__PURE__*/react.createElement("div", {
       className: `leaders__user leaders__user_place_${index + 1}`,
       key: `leaders_user_${index}`
     }, /*#__PURE__*/react.createElement(userCard_UserCard, {
       className: "leaders__user-info",
       user: user,
-      emoji: index === 0 ? emoji : null
+      emoji: userEmoji
     }), /*#__PURE__*/react.createElement(prizePodiumColumn_PrizePodiumColumn, {
       place: index + 1,
       isWinner: index === 0
@@ -1139,6 +1155,22 @@ ArrowButton.defaultProps = {
   'data-params': ''
 };
 /* harmony default export */ const arrowButton_ArrowButton = (ArrowButton);
+;// CONCATENATED MODULE: ./src/utils/getSettings.js
+
+const getSettings = () => {
+  const params = new URLSearchParams(window.location.search);
+  const slide = params.get('slide') || 1;
+  const theme = params.get('theme') || 'dark';
+  return {
+    slide,
+    theme
+  };
+};
+const getScreenOrientation = () => {
+  if (window.innerHeight > window.innerWidth) {
+    return screenOrientation.vertical;
+  } else return screenOrientation.horizontal;
+};
 ;// CONCATENATED MODULE: ./src/slides/vote/VoteSlide.js
 
 
@@ -1149,6 +1181,11 @@ ArrowButton.defaultProps = {
 
 
 
+const offsetStep = {
+  vertical: 8,
+  horizontal: 6
+};
+
 const VoteSlide = props => {
   const {
     title,
@@ -1157,6 +1194,7 @@ const VoteSlide = props => {
     offset,
     selectedUserId
   } = props;
+  const step = offsetStep[getScreenOrientation()];
   let startIndex = 0;
 
   for (let i = 0; i < users.length; i++) {
@@ -1166,7 +1204,7 @@ const VoteSlide = props => {
     }
   }
 
-  const renderedUsers = users.slice(startIndex, startIndex + 6).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
+  const renderedUsers = users.slice(startIndex, startIndex + step).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
     className: classnames_default()('vote__user', {
       vote__user_selected: user.id === selectedUserId
     }),
@@ -1182,10 +1220,15 @@ const VoteSlide = props => {
       }
     })
   }));
+  const isButtonDisabled = {
+    [arrowButtonDirections.up]: startIndex < step,
+    [arrowButtonDirections.down]: startIndex + step >= users.length
+  };
 
   const renderButton = (dir, startUserId) => /*#__PURE__*/react.createElement(arrowButton_ArrowButton, {
     className: `vote__button vote__button_${dir}`,
     direction: dir,
+    disabled: isButtonDisabled[dir],
     "data-action": "update",
     "data-params": JSON.stringify({
       alias: 'vote',
@@ -1202,8 +1245,12 @@ const VoteSlide = props => {
       newIndex = 0;
     }
 
-    if (newIndex >= users.length) {
-      newIndex = users.length - users.length % 6;
+    if (newIndex === users.length) {
+      newIndex--;
+    }
+
+    if (newIndex > users.length) {
+      newIndex = users.length - users.length % step;
     }
 
     return users[newIndex].id;
@@ -1214,7 +1261,7 @@ const VoteSlide = props => {
     subtitle: subtitle
   }, /*#__PURE__*/react.createElement("div", {
     className: "vote"
-  }, renderButton(arrowButtonDirections.up, getNewOffset(-6)), renderedUsers, renderButton(arrowButtonDirections.down, getNewOffset(6))));
+  }, renderButton(arrowButtonDirections.up, getNewOffset(-step)), renderedUsers, renderButton(arrowButtonDirections.down, getNewOffset(step))));
 };
 
 VoteSlide.propTypes = {
@@ -1455,16 +1502,6 @@ Diagram.defaultProps = {
   categories: []
 };
 /* harmony default export */ const diagram_Diagram = (Diagram);
-;// CONCATENATED MODULE: ./src/utils/getSettings.js
-const getSettings = () => {
-  const params = new URLSearchParams(window.location.search);
-  const slide = params.get('slide') || 1;
-  const theme = params.get('theme') || 'dark';
-  return {
-    slide,
-    theme
-  };
-};
 ;// CONCATENATED MODULE: ./src/slides/activity/Activity.js
 
 
