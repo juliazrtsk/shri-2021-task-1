@@ -8,7 +8,7 @@
 
 .user-card__emoji {
   position: absolute;
-  top: 2px;
+  top: -3px;
 }
 
 .user-card__avatar {
