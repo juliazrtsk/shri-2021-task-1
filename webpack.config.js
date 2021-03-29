@@ -6,7 +6,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = (env) => {
+module.exports = env => {
   const dev = env.development;
   const prod = env.production;
   return {
@@ -28,7 +28,7 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js'],
       alias: {
-        'src': path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, 'src'),
         '~fonts': path.resolve(__dirname, 'assets/fonts'),
         '~images': path.resolve(__dirname, 'assets/images'),
       },
@@ -39,18 +39,21 @@ module.exports = (env) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
           },
         },
         {
           test: /\.css$/i,
-          use: [{
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '/',
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '/',
+              },
             },
-          }, 'css-loader'
-          ]},
+            'css-loader',
+          ],
+        },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           loader: 'file-loader',
@@ -67,11 +70,11 @@ module.exports = (env) => {
             outputPath: 'fonts',
           },
         },
-      ]
+      ],
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new CopyPlugin({patterns: ['data']}),
+      new CopyPlugin({ patterns: ['data'] }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '/public/index.html'),
         inject: 'body',
@@ -87,10 +90,7 @@ module.exports = (env) => {
     optimization: {
       // Temporary turned off
       minimize: false,
-      minimizer: [
-        `...`,
-        new CssMinimizerPlugin(),
-      ],
+      minimizer: [`...`, new CssMinimizerPlugin()],
     },
-  }
+  };
 };

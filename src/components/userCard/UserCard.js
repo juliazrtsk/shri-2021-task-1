@@ -12,7 +12,11 @@ const UserCard = props => {
   const { className, user, emoji, showDetails, size } = props;
 
   return (
-    <div className={`user-card user-card_size_${size} ${className}`}>
+    <div
+      className={`user-card user-card_size_${size} ${className}`}
+      data-action={props['data-action']}
+      data-params={props['data-params']}
+    >
       {emoji && <Emoji className='user-card__emoji' symbol={emoji} />}
       <Avatar
         className='user-card__avatar'
@@ -36,6 +40,8 @@ UserCard.propTypes = {
   emoji: PropTypes.string,
   showDetails: PropTypes.bool,
   size: PropTypes.oneOf([userCardSizes.m, userCardSizes.s]),
+  'data-action': PropTypes.string,
+  'data-params': PropTypes.string,
 };
 
 UserCard.defaultProps = {
@@ -43,6 +49,8 @@ UserCard.defaultProps = {
   emoji: '',
   showDetails: true,
   size: userCardSizes.m,
+  'data-action': '',
+  'data-params': '',
 };
 
 export default UserCard;
