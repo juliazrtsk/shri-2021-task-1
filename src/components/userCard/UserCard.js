@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from 'src/components/avatar/Avatar';
@@ -11,19 +11,14 @@ import './style.css';
 const UserCard = props => {
   const { className, user, emoji, showDetails, size } = props;
 
-  const [avatar, setAvatar] = useState(null);
-
-  // Todo: fix hook calling
-  useEffect(() => {
-    import(`~images/2x/${user.avatar}`).then(res => {
-      setAvatar(res.default);
-    });
-  }, [user.avatar]);
-
   return (
     <div className={`user-card user-card_size_${size} ${className}`}>
       {emoji && <Emoji className='user-card__emoji' symbol={emoji} />}
-      <Avatar className='user-card__avatar' src={avatar} alt={avatar} />
+      <Avatar
+        className='user-card__avatar'
+        src={`./images/2x/${user.avatar}`} // Todo: 1x, 2x, 3x, 4x
+        alt={`avatar ${user.name}`}
+      />
       <div className='user-card__name'>{user.name}</div>
       {showDetails && <div className='user-card__text'>{user.valueText}</div>}
     </div>
