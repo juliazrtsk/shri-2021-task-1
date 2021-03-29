@@ -17,7 +17,7 @@
 
 .user-card__name {
   margin-top: 6px;
-  word-spacing: 150px;
+  word-spacing: 500px;
   color: var(--color-primary_dark);
   font-weight: 500;
   font-size: 16px;
