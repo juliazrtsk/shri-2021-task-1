@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import SlideLayout from 'src/templates/slideLayout/SlideLayout';
-import { getSettings } from 'src/utils/getSettings';
+import { getScreenOrientation, getSettings } from 'src/utils/getSettings';
 
 import './style.css';
+
+const steps = {
+  horizontal: 17,
+  vertical: 13,
+};
 
 const commitLegendBounds = {
   min: [0],
@@ -27,9 +32,41 @@ const sumCommitsForTwoHours = hours => {
   return result;
 };
 
+const horizontalPreparation = data => {
+  const days = Object.keys(data);
+  return days.reduce((acc, day) => {
+    return { ...acc, [day]: sumCommitsForTwoHours(data[day]) };
+  }, {});
+};
+
+const splitDayOnTwoHalves = hours => {
+  let firstHalf = [];
+  let secondHalf = [];
+  hours.forEach((hour, index) => {
+    if (index % 2 === 0) {
+      firstHalf.push(hour);
+    } else {
+      secondHalf.push(hour);
+    }
+  });
+  return [firstHalf, secondHalf];
+};
+
+const verticalPreparation = data => {
+  const days = Object.keys(data);
+  return days.reduce((acc, day) => {
+    const [first, second] = splitDayOnTwoHalves(data[day]);
+    return {
+      ...acc,
+      [`${day}_1`]: first,
+      [`${day}_2`]: second,
+    };
+  }, {});
+};
+
 const dataPreparators = {
-  verticalChart: data => data,
-  horizontalChart: data => sumCommitsForTwoHours(data),
+  vertical: data => verticalPreparation(data),
+  horizontal: data => horizontalPreparation(data),
 };
 
 const bars = {
@@ -47,10 +84,11 @@ const Activity = props => {
   const { title, subtitle, data } = props;
 
   const { theme } = getSettings();
+  const orientation = getScreenOrientation();
 
   const renderedLegend = Object.keys(commitLegendBounds).map((key, index) => {
     const bounds = commitLegendBounds[key] || [];
-    const value = bounds.length > 1 ? `${bounds[0]} - ${bounds[1]}` : bounds[0];
+    const value = bounds.length > 1 ? `${bounds[0]} — ${bounds[1]}` : bounds[0];
     return (
       <div className='activity__legend-item' key={`legend_${index}`}>
         <div
@@ -63,9 +101,11 @@ const Activity = props => {
       </div>
     );
   });
-  const preparator = dataPreparators['horizontalChart'];
+
+  const preparator = dataPreparators[orientation];
+
   const renderDayChain = day =>
-    preparator(day).map((barValue, index) => {
+    day.map((barValue, index) => {
       let type = '';
       if (commitLegendBounds.min.includes(barValue)) {
         type = 'min';
@@ -89,10 +129,28 @@ const Activity = props => {
       );
     });
 
-  const renderedBars = Object.keys(data).map((day, index) => {
+  const preparedData = preparator(data);
+
+  const getOffsetStyles = index => {
+    if (orientation === 'horizontal') {
+      return {
+        top: `${steps.vertical * index}px`,
+        left: index % 2 ? `${steps.horizontal}px` : 0,
+      };
+    }
+    return {
+      bottom: index % 2 ? `${steps.vertical}px` : 0,
+      right: `${steps.horizontal * index}px`,
+    };
+  };
+  const renderedBars = Object.keys(preparedData).map((day, index) => {
     return (
-      <div key={`activity_day_${index}`} className='activity__day-row'>
-        {renderDayChain(data[day])}
+      <div
+        className={cn('activity__day', `activity__day_${orientation}`)}
+        key={`activity_day_${index}`}
+        style={getOffsetStyles(index)}
+      >
+        {renderDayChain(preparedData[day])}
       </div>
     );
   });
@@ -109,7 +167,9 @@ const Activity = props => {
                 'activity__legend-marker_dimension'
               )}
             />
-            <div className='activity__legend-value'>2 часа</div>
+            <div className='activity__legend-value'>
+              {orientation === 'horizontal' ? '2 часа' : '1 час'}
+            </div>
           </div>
           {renderedLegend}
         </div>
