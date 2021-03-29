@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import renderTemplate from './templates/templateRenderer';
+import { getSettings } from 'src/utils/getSettings';
 
 import { themes } from 'src/constants/constants';
 
 const App = () => {
-  const params = new URLSearchParams(window.location.search);
-  const slide = params.get('slide') || 1;
-  const theme = params.get('theme') || 'dark';
+  const { slide, theme } = getSettings();
 
   const [slidesData, setSlidesData] = useState(null);
   const [slideMarkup, setSlideMarkup] = useState(null);
@@ -24,7 +23,7 @@ const App = () => {
       const markup = renderTemplate(alias, data);
       setSlideMarkup(markup);
     }
-  }, [slidesData]);
+  }, [slidesData, slide]);
 
   return (
     <div
