@@ -10,11 +10,19 @@ import {
   arrowButtonDirections as directions,
   voteEmoji,
 } from 'src/constants/constants';
+import { getScreenOrientation } from 'src/utils/getSettings';
 
 import './style.css';
 
+const offsetStep = {
+  vertical: 8,
+  horizontal: 6,
+};
+
 const VoteSlide = props => {
   const { title, subtitle, users, offset, selectedUserId } = props;
+
+  const step = offsetStep[getScreenOrientation()];
 
   let startIndex = 0;
   for (let i = 0; i < users.length; i++) {
@@ -25,7 +33,7 @@ const VoteSlide = props => {
   }
 
   const renderedUsers = users
-    .slice(startIndex, startIndex + 6)
+    .slice(startIndex, startIndex + step)
     .map((user, index) => (
       <UserCard
         className={cn('vote__user', {
@@ -44,8 +52,8 @@ const VoteSlide = props => {
     ));
 
   const isButtonDisabled = {
-    [directions.up]: startIndex < 6,
-    [directions.down]: startIndex + 6 >= users.length,
+    [directions.up]: startIndex < step,
+    [directions.down]: startIndex + step >= users.length,
   };
 
   const renderButton = (dir, startUserId) => (
@@ -72,7 +80,7 @@ const VoteSlide = props => {
       newIndex--;
     }
     if (newIndex > users.length) {
-      newIndex = users.length - (users.length % 6);
+      newIndex = users.length - (users.length % step);
     }
     return users[newIndex].id;
   };
@@ -80,9 +88,9 @@ const VoteSlide = props => {
   return (
     <SlideLayout title={title} subtitle={subtitle}>
       <div className='vote'>
-        {renderButton(directions.up, getNewOffset(-6))}
+        {renderButton(directions.up, getNewOffset(-step))}
         {renderedUsers}
-        {renderButton(directions.down, getNewOffset(6))}
+        {renderButton(directions.down, getNewOffset(step))}
       </div>
     </SlideLayout>
   );

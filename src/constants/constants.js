@@ -29,3 +29,8 @@ export const sprintCommitsCategory = {
   m: 'medium',
   s: 'small',
 };
+
+export const screenOrientation = {
+  vertical: 'vertical',
+  horizontal: 'horizontal',
+};
