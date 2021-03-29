@@ -9,6 +9,8 @@
 
 .arrow-button:hover {
   cursor: pointer;
+  transition: background-image ease 0.2s;
+  background-image: url("~images/button-hover-dark.svg");
 }
 
 .arrow-button__direction_down {}
@@ -19,14 +21,19 @@
 
 .arrow-button:disabled {
   cursor: not-allowed;
-  transition: background-image ease 0.2s;
-  background-image: url("~images/button-hover-dark.svg");
+  transition: opacity ease 0.2s;
+  opacity: 0.3;
+  background-image: url("~images/button-dark.svg");
 }
 
-.light_theme .arrow-button {
+.theme_light .arrow-button {
   background-image: url("~images/button-light.svg");
 }
 
-.light_theme .arrow-button:hover {
+.theme_light .arrow-button:hover {
   background-image: url("~images/button-hover-light.svg");
+}
+
+.theme_light .arrow-button:disabled {
+  background-image: url("~images/button-light.svg");
 }
