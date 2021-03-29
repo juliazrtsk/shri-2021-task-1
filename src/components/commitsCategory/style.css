@@ -1,7 +1,7 @@
 .commits-category {
   position: relative;
   display: grid;
-  grid-template-columns: 16px auto auto;
+  grid-template-columns: 17px auto auto;
   grid-column-gap: 10px;
   padding: 16px 0;
 }

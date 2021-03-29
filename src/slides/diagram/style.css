@@ -43,3 +43,30 @@
 .theme_light .diagram__diff {
   color: var(--color-secondary_light);
 }
+
+@media (orientation: portrait) {
+  .diagram {
+    grid-template: 1fr 1fr / auto;
+    padding: 32px 24px 24px;
+  }
+
+  .diagram__stats {
+    max-width: 164px;
+  }
+
+  .diagram__total {
+    font-size: 30px;
+    line-height: 32px;
+  }
+
+  .diagram__diff {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+  }
+
+  .diagram__categories {
+    align-self: flex-end;
+  }
+}
