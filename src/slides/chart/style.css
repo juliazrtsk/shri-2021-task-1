@@ -3,6 +3,7 @@
   grid-template-rows: auto 40px;
   grid-row-gap: 25px;
   height: 100%;
+  width: 100%;
   padding: 33px 58px 24px;
   box-sizing: border-box;
 }

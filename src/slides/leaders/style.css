@@ -1,6 +1,6 @@
 .leaders {
-  display: flex;
-  justify-content: space-around; /* Todo: make it center when working with indents */
+  display: grid;
+  grid-template: auto / repeat(5, 1fr);
   padding: 16px 66px 0;
   box-sizing: border-box;
   height: 100%;
@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 120px;
+  min-width: 120px;
   text-align: center;
 }
 
@@ -18,8 +18,48 @@
   margin-bottom: 16px;
 }
 
-.leaders__user_place_1 {}
-.leaders__user_place_2 {}
-.leaders__user_place_3 {}
-.leaders__user_place_4 {}
-.leaders__user_place_5 {}
+.leaders__user_place_1 {
+  z-index: 3;
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.leaders__user_place_2 {
+  z-index: 2;
+  margin: 20px 0 0 -20px;
+  grid-row: 1;
+  grid-column: 4;
+}
+
+.leaders__user_place_3 {
+  z-index: 2;
+  margin: 20px -20px 0 0;
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.leaders__user_place_4 {
+  margin: 40px 0 0 -20px;
+  grid-row: 1;
+  grid-column: 5;
+}
+
+.leaders__user_place_5 {
+  margin: 40px -20px 0 0;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.leaders__user_place_4 .user-card,
+.leaders__user_place_4 .prize-podium-column__place,
+.leaders__user_place_2 .user-card,
+.leaders__user_place_2 .prize-podium-column__place {
+  padding-left: 20px;
+}
+
+.leaders__user_place_5 .user-card,
+.leaders__user_place_5 .prize-podium-column__place,
+.leaders__user_place_3 .user-card,
+.leaders__user_place_3 .prize-podium-column__place {
+  padding-right: 20px;
+}

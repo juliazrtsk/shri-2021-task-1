@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from 'src/components/avatar/Avatar';
@@ -11,19 +11,18 @@ import './style.css';
 const UserCard = props => {
   const { className, user, emoji, showDetails, size } = props;
 
-  const [avatar, setAvatar] = useState(null);
-
-  // Todo: fix hook calling
-  useEffect(() => {
-    import(`~images/2x/${user.avatar}`).then(res => {
-      setAvatar(res.default);
-    });
-  }, [user.avatar]);
-
   return (
-    <div className={`user-card user-card_size_${size} ${className}`}>
+    <div
+      className={`user-card user-card_size_${size} ${className}`}
+      data-action={props['data-action']}
+      data-params={props['data-params']}
+    >
       {emoji && <Emoji className='user-card__emoji' symbol={emoji} />}
-      <Avatar className='user-card__avatar' src={avatar} alt={avatar} />
+      <Avatar
+        className='user-card__avatar'
+        src={user.avatar}
+        alt={`avatar ${user.name}`}
+      />
       <div className='user-card__name'>{user.name}</div>
       {showDetails && <div className='user-card__text'>{user.valueText}</div>}
     </div>
@@ -41,6 +40,8 @@ UserCard.propTypes = {
   emoji: PropTypes.string,
   showDetails: PropTypes.bool,
   size: PropTypes.oneOf([userCardSizes.m, userCardSizes.s]),
+  'data-action': PropTypes.string,
+  'data-params': PropTypes.string,
 };
 
 UserCard.defaultProps = {
@@ -48,6 +49,8 @@ UserCard.defaultProps = {
   emoji: '',
   showDetails: true,
   size: userCardSizes.m,
+  'data-action': '',
+  'data-params': '',
 };
 
 export default UserCard;

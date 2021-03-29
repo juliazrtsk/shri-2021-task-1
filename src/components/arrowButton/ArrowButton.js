@@ -17,6 +17,8 @@ const ArrowButton = props => {
       )}
       onClick={onClick}
       disabled={disabled}
+      data-action={props['data-action']}
+      data-params={props['data-params']}
     />
   );
 };
@@ -26,6 +28,8 @@ ArrowButton.propTypes = {
   direction: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  'data-action': PropTypes.string,
+  'data-params': PropTypes.string,
 };
 
 ArrowButton.defaultProps = {
@@ -33,6 +37,8 @@ ArrowButton.defaultProps = {
   direction: directions.up,
   onClick: () => {},
   disabled: false,
+  'data-action': '',
+  'data-params': '',
 };
 
 export default ArrowButton;
