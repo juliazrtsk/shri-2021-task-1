@@ -16,7 +16,7 @@ const UserCard = props => {
       {emoji && <Emoji className='user-card__emoji' symbol={emoji} />}
       <Avatar
         className='user-card__avatar'
-        src={`./images/2x/${user.avatar}`} // Todo: 1x, 2x, 3x, 4x
+        src={user.avatar}
         alt={`avatar ${user.name}`}
       />
       <div className='user-card__name'>{user.name}</div>
