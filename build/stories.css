@@ -84,7 +84,7 @@
 
 .user-card__emoji {
   position: absolute;
-  top: 2px;
+  top: -3px;
 }
 
 .user-card__avatar {
@@ -185,7 +185,7 @@
 .leaders {
   display: grid;
   grid-template: auto / repeat(5, 1fr);
-  padding: 16px 66px 0;
+  padding: 26px 66px 0;
   box-sizing: border-box;
   height: 100%;
 }
@@ -246,6 +246,35 @@
 .leaders__user_place_3 .user-card,
 .leaders__user_place_3 .prize-podium-column__place {
   padding-right: 20px;
+}
+
+@media (orientation: portrait) {
+  .leaders {
+    padding: 70px 24px 0;
+  }
+
+  .leaders__user_place_2 {
+    margin-top: 50px;
+  }
+
+  .leaders__user_place_3 {
+    margin-top: 100px;
+  }
+
+  .leaders__user_place_4 {
+    margin-top: 150px;
+  }
+
+  .leaders__user_place_5 {
+    margin-top: 200px;
+  }
+}
+
+@media (max-width: 570px) {
+  .leaders__user_place_5,
+  .leaders__user_place_4 {
+    display: none;
+  }
 }
 
 .arrow-button {
