@@ -2,7 +2,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-background_dark);
+  background: radial-gradient(70.24% 70.24% at 49.87% 29.76%, rgba(18, 12, 1, 0.9) 0%, #000 100%);
 }
 
 .slide__header {
@@ -35,7 +35,7 @@
 }
 
 .theme_light .slide {
-  background-color: var(--color-background_light);
+  background: var(--color-background_light);
 }
 
 .theme_light .slide__title {
