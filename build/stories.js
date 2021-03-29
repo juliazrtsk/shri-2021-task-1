@@ -1064,7 +1064,7 @@ const LeadersSlide = props => {
     users,
     selectedUserId
   } = props;
-  const renderedUsers = users.map((user, index) => {
+  const renderedUsers = users.slice(0, 5).map((user, index) => {
     let userEmoji = null;
 
     if (user.id === selectedUserId) {
@@ -1509,6 +1509,10 @@ Diagram.defaultProps = {
 
 
 
+const steps = {
+  horizontal: 17,
+  vertical: 13
+};
 const commitLegendBounds = {
   min: [0],
   mid: [1, 2],
@@ -1530,9 +1534,42 @@ const sumCommitsForTwoHours = hours => {
   return result;
 };
 
+const horizontalPreparation = data => {
+  const days = Object.keys(data);
+  return days.reduce((acc, day) => {
+    return { ...acc,
+      [day]: sumCommitsForTwoHours(data[day])
+    };
+  }, {});
+};
+
+const splitDayOnTwoHalves = hours => {
+  let firstHalf = [];
+  let secondHalf = [];
+  hours.forEach((hour, index) => {
+    if (index % 2 === 0) {
+      firstHalf.push(hour);
+    } else {
+      secondHalf.push(hour);
+    }
+  });
+  return [firstHalf, secondHalf];
+};
+
+const verticalPreparation = data => {
+  const days = Object.keys(data);
+  return days.reduce((acc, day) => {
+    const [first, second] = splitDayOnTwoHalves(data[day]);
+    return { ...acc,
+      [`${day}_1`]: first,
+      [`${day}_2`]: second
+    };
+  }, {});
+};
+
 const dataPreparators = {
-  verticalChart: data => data,
-  horizontalChart: data => sumCommitsForTwoHours(data)
+  vertical: data => verticalPreparation(data),
+  horizontal: data => horizontalPreparation(data)
 };
 const bars = {
   min_dark: './images/min-dark.svg',
@@ -1554,9 +1591,10 @@ const Activity = props => {
   const {
     theme
   } = getSettings();
+  const orientation = getScreenOrientation();
   const renderedLegend = Object.keys(commitLegendBounds).map((key, index) => {
     const bounds = commitLegendBounds[key] || [];
-    const value = bounds.length > 1 ? `${bounds[0]} - ${bounds[1]}` : bounds[0];
+    const value = bounds.length > 1 ? `${bounds[0]} — ${bounds[1]}` : bounds[0];
     return /*#__PURE__*/react.createElement("div", {
       className: "activity__legend-item",
       key: `legend_${index}`
@@ -1566,9 +1604,9 @@ const Activity = props => {
       className: "activity__legend-value"
     }, value));
   });
-  const preparator = dataPreparators['horizontalChart'];
+  const preparator = dataPreparators[orientation];
 
-  const renderDayChain = day => preparator(day).map((barValue, index) => {
+  const renderDayChain = day => day.map((barValue, index) => {
     let type = '';
 
     if (commitLegendBounds.min.includes(barValue)) {
@@ -1595,11 +1633,28 @@ const Activity = props => {
     });
   });
 
-  const renderedBars = Object.keys(data).map((day, index) => {
+  const preparedData = preparator(data);
+
+  const getOffsetStyles = index => {
+    if (orientation === 'horizontal') {
+      return {
+        top: `${steps.vertical * index}px`,
+        left: index % 2 ? `${steps.horizontal}px` : 0
+      };
+    }
+
+    return {
+      bottom: index % 2 ? `${steps.vertical}px` : 0,
+      right: `${steps.horizontal * index}px`
+    };
+  };
+
+  const renderedBars = Object.keys(preparedData).map((day, index) => {
     return /*#__PURE__*/react.createElement("div", {
+      className: classnames_default()('activity__day', `activity__day_${orientation}`),
       key: `activity_day_${index}`,
-      className: "activity__day-row"
-    }, renderDayChain(data[day]));
+      style: getOffsetStyles(index)
+    }, renderDayChain(preparedData[day]));
   });
   return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
     title: title,
@@ -1616,7 +1671,7 @@ const Activity = props => {
     className: classnames_default()('activity__legend-marker', 'activity__legend-marker_dimension')
   }), /*#__PURE__*/react.createElement("div", {
     className: "activity__legend-value"
-  }, "2 \u0447\u0430\u0441\u0430")), renderedLegend)));
+  }, orientation === 'horizontal' ? '2 часа' : '1 час')), renderedLegend)));
 };
 
 Activity.propTypes = {
