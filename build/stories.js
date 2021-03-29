@@ -1,135 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 990:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var map = {
-	"./1.jpg": [
-		440,
-		440
-	],
-	"./10.jpg": [
-		55,
-		55
-	],
-	"./11.jpg": [
-		667,
-		294
-	],
-	"./12.jpg": [
-		423,
-		423
-	],
-	"./2.jpg": [
-		564,
-		564
-	],
-	"./3.jpg": [
-		282,
-		282
-	],
-	"./4.jpg": [
-		560,
-		560
-	],
-	"./5.jpg": [
-		290,
-		290
-	],
-	"./6.jpg": [
-		238,
-		238
-	],
-	"./7.jpg": [
-		162,
-		162
-	],
-	"./8.jpg": [
-		805,
-		805
-	],
-	"./9.jpg": [
-		968,
-		968
-	],
-	"./extra-dark.png": [
-		121,
-		121
-	],
-	"./extra-light.png": [
-		407,
-		407
-	],
-	"./favicon-l-dark.png": [
-		195,
-		195
-	],
-	"./favicon-l-light.png": [
-		355,
-		355
-	],
-	"./favicon-m-dark.png": [
-		755,
-		755
-	],
-	"./favicon-m-light.png": [
-		758,
-		758
-	],
-	"./favicon-s-dark.png": [
-		340,
-		340
-	],
-	"./favicon-s-light.png": [
-		77,
-		77
-	],
-	"./max-dark.png": [
-		557,
-		557
-	],
-	"./max-light.png": [
-		262,
-		262
-	],
-	"./mid-dark.png": [
-		540,
-		540
-	],
-	"./mid-light.png": [
-		165,
-		165
-	],
-	"./min-dark.png": [
-		889,
-		889
-	],
-	"./min-light.png": [
-		462,
-		462
-	]
-};
-function webpackAsyncContext(req) {
-	if(!__webpack_require__.o(map, req)) {
-		return Promise.resolve().then(() => {
-			var e = new Error("Cannot find module '" + req + "'");
-			e.code = 'MODULE_NOT_FOUND';
-			throw e;
-		});
-	}
-
-	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(() => {
-		return __webpack_require__(id);
-	});
-}
-webpackAsyncContext.keys = () => (Object.keys(map));
-webpackAsyncContext.id = 990;
-module.exports = webpackAsyncContext;
-
-/***/ }),
-
 /***/ 184:
 /***/ ((module, exports) => {
 
@@ -920,9 +791,6 @@ if (true) {
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -948,225 +816,9 @@ if (true) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/ensure chunk */
-/******/ 	(() => {
-/******/ 		__webpack_require__.f = {};
-/******/ 		// This file contains only the entry chunk.
-/******/ 		// The chunk loading function for additional chunks
-/******/ 		__webpack_require__.e = (chunkId) => {
-/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
-/******/ 				__webpack_require__.f[key](chunkId, promises);
-/******/ 				return promises;
-/******/ 			}, []));
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/get javascript chunk filename */
-/******/ 	(() => {
-/******/ 		// This function allow to reference async chunks
-/******/ 		__webpack_require__.u = (chunkId) => {
-/******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + ".stories.js";
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/get mini-css chunk filename */
-/******/ 	(() => {
-/******/ 		// This function allow to reference all chunks
-/******/ 		__webpack_require__.miniCssF = (chunkId) => {
-/******/ 			// return url for filenames based on template
-/******/ 			return undefined;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/load script */
-/******/ 	(() => {
-/******/ 		var inProgress = {};
-/******/ 		var dataWebpackPrefix = "shri-2021-task-1:";
-/******/ 		// loadScript function to load a script via script tag
-/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
-/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
-/******/ 			var script, needAttach;
-/******/ 			if(key !== undefined) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				for(var i = 0; i < scripts.length; i++) {
-/******/ 					var s = scripts[i];
-/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
-/******/ 				}
-/******/ 			}
-/******/ 			if(!script) {
-/******/ 				needAttach = true;
-/******/ 				script = document.createElement('script');
-/******/ 		
-/******/ 				script.charset = 'utf-8';
-/******/ 				script.timeout = 120;
-/******/ 				if (__webpack_require__.nc) {
-/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
-/******/ 				}
-/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
-/******/ 				script.src = url;
-/******/ 			}
-/******/ 			inProgress[url] = [done];
-/******/ 			var onScriptComplete = (prev, event) => {
-/******/ 				// avoid mem leaks in IE.
-/******/ 				script.onerror = script.onload = null;
-/******/ 				clearTimeout(timeout);
-/******/ 				var doneFns = inProgress[url];
-/******/ 				delete inProgress[url];
-/******/ 				script.parentNode && script.parentNode.removeChild(script);
-/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
-/******/ 				if(prev) return prev(event);
-/******/ 			}
-/******/ 			;
-/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
-/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
-/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
-/******/ 			needAttach && document.head.appendChild(script);
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// Promise = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			179: 0
-/******/ 		};
-/******/ 		
-/******/ 		
-/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
-/******/ 				// JSONP chunk loading for javascript
-/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
-/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
-/******/ 		
-/******/ 					// a Promise means "currently loading".
-/******/ 					if(installedChunkData) {
-/******/ 						promises.push(installedChunkData[2]);
-/******/ 					} else {
-/******/ 						if(true) { // all chunks have JS
-/******/ 							// setup Promise in chunk cache
-/******/ 							var promise = new Promise((resolve, reject) => {
-/******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
-/******/ 							});
-/******/ 							promises.push(installedChunkData[2] = promise);
-/******/ 		
-/******/ 							// start chunk loading
-/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
-/******/ 							// create error before stack unwound to get useful stacktrace later
-/******/ 							var error = new Error();
-/******/ 							var loadingEnded = (event) => {
-/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
-/******/ 									installedChunkData = installedChunks[chunkId];
-/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
-/******/ 									if(installedChunkData) {
-/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
-/******/ 										var realSrc = event && event.target && event.target.src;
-/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
-/******/ 										error.name = 'ChunkLoadError';
-/******/ 										error.type = errorType;
-/******/ 										error.request = realSrc;
-/******/ 										installedChunkData[1](error);
-/******/ 									}
-/******/ 								}
-/******/ 							};
-/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
-/******/ 						} else installedChunks[chunkId] = 0;
-/******/ 					}
-/******/ 				}
-/******/ 		};
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		// no deferred startup
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0, resolves = [];
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					resolves.push(installedChunks[chunkId][0]);
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			for(moduleId in moreModules) {
-/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 				}
-/******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			while(resolves.length) {
-/******/ 				resolves.shift()();
-/******/ 			}
-/******/ 		
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkshri_2021_task_1"] = self["webpackChunkshri_2021_task_1"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 		
-/******/ 		// no deferred startup
 /******/ 	})();
 /******/ 	
 /************************************************************************/
@@ -1317,13 +969,6 @@ const UserCard = props => {
     showDetails,
     size
   } = props;
-  const [avatar, setAvatar] = (0,react.useState)(null); // Todo: fix hook calling
-
-  (0,react.useEffect)(() => {
-    __webpack_require__(990)(`./${user.avatar}`).then(res => {
-      setAvatar(res.default);
-    });
-  }, [user.avatar]);
   return /*#__PURE__*/react.createElement("div", {
     className: `user-card user-card_size_${size} ${className}`
   }, emoji && /*#__PURE__*/react.createElement(emoji_Emoji, {
@@ -1331,8 +976,9 @@ const UserCard = props => {
     symbol: emoji
   }), /*#__PURE__*/react.createElement(avatar_Avatar, {
     className: "user-card__avatar",
-    src: avatar,
-    alt: avatar
+    src: `./images/2x/${user.avatar}` // Todo: 1x, 2x, 3x, 4x
+    ,
+    alt: `avatar ${user.name}`
   }), /*#__PURE__*/react.createElement("div", {
     className: "user-card__name"
   }, user.name), showDetails && /*#__PURE__*/react.createElement("div", {
@@ -1732,10 +1378,12 @@ const Diagram = props => {
   }, /*#__PURE__*/react.createElement("div", {
     className: "diagram__round-chart"
   }, /*#__PURE__*/react.createElement("div", {
+    className: "diagram__stats"
+  }, /*#__PURE__*/react.createElement("div", {
     className: "diagram__total"
   }, totalText), /*#__PURE__*/react.createElement("div", {
     className: "diagram__diff"
-  }, differenceText)), /*#__PURE__*/react.createElement("div", {
+  }, differenceText))), /*#__PURE__*/react.createElement("div", {
     className: "diagram__categories"
   }, renderedCategories)));
 };
@@ -1759,7 +1407,161 @@ Diagram.defaultProps = {
   categories: []
 };
 /* harmony default export */ const diagram_Diagram = (Diagram);
+;// CONCATENATED MODULE: ./src/utils/getSettings.js
+const getSettings = () => {
+  const params = new URLSearchParams(window.location.search);
+  const slide = params.get('slide') || 1;
+  const theme = params.get('theme') || 'dark';
+  return {
+    slide,
+    theme
+  };
+};
+;// CONCATENATED MODULE: ./src/slides/activity/Activity.js
+
+
+
+
+
+
+const commitLegendBounds = {
+  min: [0],
+  mid: [1, 2],
+  max: [3, 4],
+  extra: [5, 6]
+};
+
+const sumCommitsForTwoHours = hours => {
+  let result = [];
+  result = hours.reduce((acc, cur, index) => {
+    if (index % 2 !== 0) {
+      acc[acc.length - 1] += cur;
+    } else {
+      acc.push(cur);
+    }
+
+    return acc;
+  }, []);
+  return result;
+};
+
+const dataPreparators = {
+  verticalChart: data => data,
+  horizontalChart: data => sumCommitsForTwoHours(data)
+};
+const bars = {
+  min_dark: './images/min-dark.svg',
+  mid_dark: './images/mid-dark.svg',
+  max_dark: './images/max-dark.svg',
+  extra_dark: './images/extra-dark.svg',
+  min_light: './images/min-light.svg',
+  mid_light: './images/mid-light.svg',
+  max_light: './images/max-light.svg',
+  extra_light: './images/extra-light.svg'
+};
+
+const Activity = props => {
+  const {
+    title,
+    subtitle,
+    data
+  } = props;
+  const {
+    theme
+  } = getSettings();
+  const renderedLegend = Object.keys(commitLegendBounds).map((key, index) => {
+    const bounds = commitLegendBounds[key] || [];
+    const value = bounds.length > 1 ? `${bounds[0]} - ${bounds[1]}` : bounds[0];
+    return /*#__PURE__*/react.createElement("div", {
+      className: "activity__legend-item",
+      key: `legend_${index}`
+    }, /*#__PURE__*/react.createElement("div", {
+      className: classnames_default()('activity__legend-marker', `activity__legend-marker_type_${key}`)
+    }), /*#__PURE__*/react.createElement("div", {
+      className: "activity__legend-value"
+    }, value));
+  });
+  const preparator = dataPreparators['horizontalChart'];
+
+  const renderDayChain = day => preparator(day).map((barValue, index) => {
+    let type = '';
+
+    if (commitLegendBounds.min.includes(barValue)) {
+      type = 'min';
+    }
+
+    if (commitLegendBounds.mid.includes(barValue)) {
+      type = 'mid';
+    }
+
+    if (commitLegendBounds.max.includes(barValue)) {
+      type = 'max';
+    }
+
+    if (commitLegendBounds.extra.includes(barValue)) {
+      type = 'extra';
+    }
+
+    return /*#__PURE__*/react.createElement("img", {
+      key: `activity_bar_${index}`,
+      src: bars[`${type}_${theme}`],
+      alt: type
+    });
+  });
+
+  const renderedBars = Object.keys(data).map((day, index) => {
+    return /*#__PURE__*/react.createElement("div", {
+      key: `activity_day_${index}`,
+      className: "activity__day-row"
+    }, renderDayChain(data[day]));
+  });
+  return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
+    title: title,
+    subtitle: subtitle
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "activity"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "activity__chart"
+  }, renderedBars), /*#__PURE__*/react.createElement("div", {
+    className: "activity__legend"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "activity__legend-item"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: classnames_default()('activity__legend-marker', 'activity__legend-marker_dimension')
+  }), /*#__PURE__*/react.createElement("div", {
+    className: "activity__legend-value"
+  }, "2 \u0447\u0430\u0441\u0430")), renderedLegend)));
+};
+
+Activity.propTypes = {
+  title: (prop_types_default()).string,
+  subtitle: (prop_types_default()).string,
+  data: prop_types_default().shape({
+    mon: prop_types_default().arrayOf((prop_types_default()).number),
+    tue: prop_types_default().arrayOf((prop_types_default()).number),
+    wed: prop_types_default().arrayOf((prop_types_default()).number),
+    thu: prop_types_default().arrayOf((prop_types_default()).number),
+    fri: prop_types_default().arrayOf((prop_types_default()).number),
+    sat: prop_types_default().arrayOf((prop_types_default()).number),
+    sun: prop_types_default().arrayOf((prop_types_default()).number)
+  })
+};
+Activity.defaultProps = {
+  title: '',
+  subtitle: '',
+  data: {
+    mon: [],
+    tue: [],
+    wed: [],
+    thu: [],
+    fri: [],
+    sat: [],
+    sun: []
+  }
+};
+/* harmony default export */ const activity_Activity = (Activity);
 ;// CONCATENATED MODULE: ./src/templates/templateRenderer.js
+
 
 
 
@@ -1771,13 +1573,13 @@ const slideMap = {
   [aliases.vote]: data => vote_VoteSlide(data),
   [aliases.chart]: data => chart_ChartSlide(data),
   [aliases.diagram]: data => diagram_Diagram(data),
-  [aliases.activity]: () => {}
+  [aliases.activity]: data => activity_Activity(data)
 };
 window.renderTemplate = renderTemplate;
 
 function renderTemplate(alias, data) {
   if (!aliases[alias]) {
-    console.error('Not found');
+    console.error('Incorrect data. Alias not found');
     return;
   }
 
@@ -1792,10 +1594,12 @@ function renderTemplate(alias, data) {
 
 
 
+
 const App = () => {
-  const params = new URLSearchParams(window.location.search);
-  const slide = params.get('slide') || 1;
-  const theme = params.get('theme') || 'dark';
+  const {
+    slide,
+    theme
+  } = getSettings();
   const [slidesData, setSlidesData] = (0,react.useState)(null);
   const [slideMarkup, setSlideMarkup] = (0,react.useState)(null);
   (0,react.useEffect)(() => {
@@ -1810,7 +1614,7 @@ const App = () => {
       const markup = templateRenderer(alias, data);
       setSlideMarkup(markup);
     }
-  }, [slidesData]);
+  }, [slidesData, slide]);
   return /*#__PURE__*/react.createElement("div", {
     className: `stories ${themes[theme] || themes.dark}`,
     dangerouslySetInnerHTML: {
