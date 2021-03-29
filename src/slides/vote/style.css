@@ -39,11 +39,13 @@
 
 .vote__user:hover {
   transition: background-color ease 0.2s;
-  background-color: var(--color-secondary_dark);
+  background: radial-gradient(85.62% 148.33% at 49.85% 100%, rgba(68, 58, 42, 0.7864) 0%, rgba(0, 0, 0, 0.8) 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(255, 255, 255, 0.1);
 }
 
 .vote__user_selected {
-  background-color: var(--color-accent);
+  background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #ffa300 0%, #2d1c00 100%);
+  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0 6px 15px rgba(255, 162, 0, 0.4);
 }
 
 .vote__button_up {
