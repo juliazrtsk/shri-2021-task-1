@@ -51,11 +51,13 @@
 .vote__button_up {
   grid-column: 3;
   grid-row: 1;
+  margin-top: 26px;
 }
 
 .vote__button_down {
   grid-column: 3;
   grid-row: 2;
+  margin-bottom: 26px;
 }
 
 .theme_light .vote {

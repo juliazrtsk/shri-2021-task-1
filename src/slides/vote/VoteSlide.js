@@ -43,10 +43,16 @@ const VoteSlide = props => {
       />
     ));
 
+  const isButtonDisabled = {
+    [directions.up]: startIndex < 6,
+    [directions.down]: startIndex + 6 >= users.length,
+  };
+
   const renderButton = (dir, startUserId) => (
     <ArrowButton
       className={`vote__button vote__button_${dir}`}
       direction={dir}
+      disabled={isButtonDisabled[dir]}
       data-action='update'
       data-params={JSON.stringify({
         alias: 'vote',
@@ -62,7 +68,10 @@ const VoteSlide = props => {
     if (newIndex < 0) {
       newIndex = 0;
     }
-    if (newIndex >= users.length) {
+    if (newIndex === users.length) {
+      newIndex--;
+    }
+    if (newIndex > users.length) {
       newIndex = users.length - (users.length % 6);
     }
     return users[newIndex].id;

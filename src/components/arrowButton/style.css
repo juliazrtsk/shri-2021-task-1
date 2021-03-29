@@ -8,8 +8,7 @@
 }
 
 .arrow-button:hover {
-  transition: background-image ease 0.2s;
-  background-image: url("~images/button-hover-dark.svg");
+  cursor: pointer;
 }
 
 .arrow-button__direction_down {}
@@ -20,6 +19,8 @@
 
 .arrow-button:disabled {
   cursor: not-allowed;
+  transition: background-image ease 0.2s;
+  background-image: url("~images/button-hover-dark.svg");
 }
 
 .light_theme .arrow-button {
