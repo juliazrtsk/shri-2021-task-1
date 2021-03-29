@@ -12,7 +12,7 @@ import './style.css';
 const LeadersSlide = props => {
   const { title, subtitle, emoji, users, selectedUserId } = props;
 
-  const renderedUsers = users.map((user, index) => {
+  const renderedUsers = users.slice(0, 5).map((user, index) => {
     let userEmoji = null;
     if (user.id === selectedUserId) {
       userEmoji = voteEmoji;
