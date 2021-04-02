@@ -1302,8 +1302,11 @@ const Bar = props => {
     className: classnames_default()('bar', className)
   }, /*#__PURE__*/react.createElement("div", {
     className: "bar__value"
-  }, value), /*#__PURE__*/react.createElement("div", {
-    className: "bar__column"
+  }, value.text || ''), /*#__PURE__*/react.createElement("div", {
+    className: "bar__column",
+    style: {
+      height: `${value.percentage}%`
+    }
   }), /*#__PURE__*/react.createElement("div", {
     className: "bar__description"
   }, description));
@@ -1311,12 +1314,18 @@ const Bar = props => {
 
 Bar.propTypes = {
   className: (prop_types_default()).string,
-  value: (prop_types_default()).number,
+  value: prop_types_default().shape({
+    text: (prop_types_default()).node,
+    percentage: prop_types_default().oneOfType([(prop_types_default()).number, (prop_types_default()).string])
+  }),
   description: (prop_types_default()).string
 };
 Bar.defaultProps = {
   className: '',
-  value: 0,
+  value: {
+    text: 0,
+    percentage: 0
+  },
   description: ''
 };
 /* harmony default export */ const bar_Bar = (Bar);
@@ -1330,20 +1339,29 @@ Bar.defaultProps = {
 
 
 
+const getUpperBound = num => {
+  const pow = num.toString().length - 1;
+  return Math.ceil(num / 10 ** pow) * 10 ** pow;
+};
+
 const ChartSlide = props => {
   const {
     title,
     subtitle,
     values,
     users
-  } = props; // Todo: тут скорее надо определять в зависимости от размера экрана?
-
-  const renderedBars = values.slice(3, values.length - 3).map((bar, index) => /*#__PURE__*/react.createElement(bar_Bar, {
+  } = props;
+  const maxValue = values.reduce((acc, cur) => acc > cur.value ? acc : cur.value);
+  const upperBound = getUpperBound(maxValue);
+  const renderedBars = values.slice(4, values.length - 3).map((bar, index) => /*#__PURE__*/react.createElement(bar_Bar, {
     className: classnames_default()('chart__bar', {
       chart__bar_active: bar.active
     }),
     key: `${title}_${index}`,
-    value: bar.value,
+    value: {
+      text: bar.value,
+      percentage: (bar.value / upperBound * 70).toFixed(2)
+    },
     description: bar.title
   }));
   const renderedLeaders = users.slice(0, 2).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
