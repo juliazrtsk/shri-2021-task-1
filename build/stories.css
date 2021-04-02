@@ -325,9 +325,7 @@
 
 .arrow-button:disabled {
   cursor: not-allowed;
-  transition: opacity ease 0.2s;
-  opacity: 0.3;
-  background-image: url(/images/button-dark.svg);
+  background-image: url(/images/button-hover-dark.svg);
 }
 
 .theme_light .arrow-button {
@@ -339,7 +337,7 @@
 }
 
 .theme_light .arrow-button:disabled {
-  background-image: url(/images/button-light.svg);
+  background-image: url(/images/button-hover-light.svg);
 }
 
 .vote {
@@ -445,18 +443,17 @@
   }
 
   .vote__user:nth-of-type(1),
-  .vote__user:nth-of-type(3) {
+  .vote__user:nth-of-type(3),
+  .vote__user:nth-of-type(4),
+  .vote__user:nth-of-type(6),
+  .vote__user:nth-of-type(7),
+  .vote__user:nth-of-type(8) {
     margin-top: 2px;
   }
 
-  .vote__user:nth-of-type(4),
-  .vote__user:nth-of-type(6) {
-    margin: 2px 0;
-  }
-
-  .vote__user:nth-of-type(7),
-  .vote__user:nth-of-type(8) {
-    margin-bottom: 2px;
+  .vote__user:nth-of-type(2),
+  .vote__user:nth-of-type(5) {
+    margin-top: 1px;
   }
 
   .vote__user:nth-of-type(1) {
@@ -490,13 +487,13 @@
   }
 
   .vote__user:nth-of-type(7) {
-    display: block;
+    display: flex;
     grid-column: 1;
     grid-row: 5 / 7;
   }
 
   .vote__user:nth-of-type(8) {
-    display: block;
+    display: flex;
     grid-column: 3;
     grid-row: 5 / 7;
   }
