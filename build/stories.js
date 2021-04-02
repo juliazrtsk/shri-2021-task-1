@@ -1204,7 +1204,7 @@ const VoteSlide = props => {
     }
   }
 
-  const renderedUsers = users.slice(startIndex, startIndex + step).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
+  const renderedUsers = users.slice(startIndex, 8).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
     className: classnames_default()('vote__user', {
       vote__user_selected: user.id === selectedUserId
     }),
