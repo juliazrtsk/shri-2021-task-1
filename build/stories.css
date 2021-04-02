@@ -17,6 +17,7 @@
   font-weight: var(--font-weight-headline);
   font-size: var(--font-size-headline);
   line-height: calc(var(--font-size-headline) + 2px);
+  letter-spacing: 0.1px;
 }
 
 .slide__subtitle {
@@ -148,6 +149,12 @@
   color: var(--color-secondary_light);
 }
 
+@media (orientation: portrait) {
+  .user-card__avatar {
+    margin-top: 21px;
+  }
+}
+
 .prize-podium-column {
   flex-grow: 1;
   padding-top: 18px;
@@ -253,9 +260,9 @@
     padding: 70px 24px 0;
   }
 
-  .leaders__user-info {
+ /* .leaders__user-info {
     margin-bottom: 15px;
-  }
+  }*/
 
   .leaders__user_place_2 {
     margin: 50px 0 0 -16px;
