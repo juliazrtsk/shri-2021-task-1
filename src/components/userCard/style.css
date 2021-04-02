@@ -57,10 +57,12 @@
 
 .user-card_size_small .user-card__name {
   grid-area: name;
+  margin-bottom: 1px;
 }
 
 .user-card_size_small .user-card__text {
   grid-area: text;
+  color: var(--color-secondary_dark);
 }
 
 .theme_light .user-card__name {
