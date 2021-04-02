@@ -53,3 +53,14 @@
     text-align: unset;
   }
 }
+
+@media (max-width: 650px) and (orientation: landscape) {
+  .slide__title {
+    --font-size-headline: 25px;
+  }
+
+  .slide__subtitle {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
