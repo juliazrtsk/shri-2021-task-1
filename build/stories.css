@@ -627,13 +627,64 @@
   box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 176, 57, 0.8);
 }
 
-@media (max-width: 570px) {
+@media (orientation: portrait) {
+  .chart {
+    grid-template-rows: auto 138px;
+    padding: 4px 0 0;
+  }
+
+  .chart__bars {
+    overflow-x: scroll;
+    padding: 0 24px;
+  }
+
+  .chart__bar {
+    margin: 0 12px;
+    position: relative;
+  }
+
+  .chart__bar:last-child::after {
+    position: absolute;
+    display: block;
+    right: -24px;
+    width: 24px;
+    height: 100%;
+    content: '';
+  }
+
+  .chart__leaders {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, 1fr);
+    padding: 0 24px 24px;
+  }
+
+  .chart__user {
+    margin: 17px 0;
+  }
+
+  .chart__user:first-child {
+    margin: 0 0 17px;
+  }
+
+  .chart__user:last-child {
+    margin: 17px 0 0;
+  }
+
+  .chart__user::before {
+    left: 0;
+    top: -17px;
+    height: 2px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 570px) and (orientation: landscape) {
   .chart__leaders {
     padding: 0 10px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (orientation: landscape) {
   .chart__leaders {
     padding: 0 150px;
   }
