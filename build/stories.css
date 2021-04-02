@@ -349,7 +349,7 @@
   grid-row-gap: 4px;
   align-items: center;
   justify-content: center;
-  padding: 3px 32px 5px;
+  padding: 5px 32px 5px;
   box-sizing: border-box;
   height: 100%;
   color: var(--color-primary_dark);
@@ -368,7 +368,7 @@
 }
 
 .vote__user .user-card__emoji {
-  top: -5px;
+  top: -6px;
 }
 
 .vote__user:first-of-type {
@@ -383,7 +383,6 @@
 
 .vote__user:hover {
   cursor: pointer;
-  transition: background-color ease 0.2s;
   background: radial-gradient(85.62% 148.33% at 49.85% 100%, rgba(68, 58, 42, 0.7864) 0%, rgba(0, 0, 0, 0.8) 100%);
   box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(255, 255, 255, 0.1);
 }
