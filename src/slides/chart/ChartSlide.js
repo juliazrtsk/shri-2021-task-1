@@ -10,17 +10,28 @@ import { userCardSizes } from 'src/constants/constants';
 
 import './style.css';
 
+const getUpperBound = num => {
+  const pow = num.toString().length - 1;
+  return Math.ceil(num / 10 ** pow) * 10 ** pow;
+};
+
 const ChartSlide = props => {
   const { title, subtitle, values, users } = props;
+  const maxValue = values.reduce((acc, cur) =>
+    acc > cur.value ? acc : cur.value
+  );
+  const upperBound = getUpperBound(maxValue);
 
-  // Todo: тут скорее надо определять в зависимости от размера экрана?
-  const renderedBars = values.slice(3, values.length - 3).map((bar, index) => (
+  const renderedBars = values.slice(4, values.length - 3).map((bar, index) => (
     <Bar
       className={cn('chart__bar', {
         chart__bar_active: bar.active,
       })}
       key={`${title}_${index}`}
-      value={bar.value}
+      value={{
+        text: bar.value,
+        percentage: ((bar.value / upperBound) * 70).toFixed(2),
+      }}
       description={bar.title}
     />
   ));

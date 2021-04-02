@@ -8,8 +8,8 @@ const Bar = props => {
   const { className, value, description } = props;
   return (
     <div className={cn('bar', className)}>
-      <div className='bar__value'>{value}</div>
-      <div className='bar__column' />
+      <div className='bar__value'>{value.text || ''}</div>
+      <div className='bar__column' style={{ height: `${value.percentage}%` }} />
       <div className='bar__description'>{description}</div>
     </div>
   );
@@ -17,13 +17,19 @@ const Bar = props => {
 
 Bar.propTypes = {
   className: PropTypes.string,
-  value: PropTypes.number,
+  value: PropTypes.shape({
+    text: PropTypes.node,
+    percentage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  }),
   description: PropTypes.string,
 };
 
 Bar.defaultProps = {
   className: '',
-  value: 0,
+  value: {
+    text: 0,
+    percentage: 0,
+  },
   description: '',
 };
 
