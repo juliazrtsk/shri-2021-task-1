@@ -153,6 +153,10 @@
   .user-card__avatar {
     margin-top: 21px;
   }
+
+  .user-card__emoji {
+    top: -3px;
+  }
 }
 
 .prize-podium-column {
