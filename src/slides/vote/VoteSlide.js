@@ -32,24 +32,22 @@ const VoteSlide = props => {
     }
   }
 
-  const renderedUsers = users
-    .slice(startIndex, startIndex + step)
-    .map((user, index) => (
-      <UserCard
-        className={cn('vote__user', {
-          vote__user_selected: user.id === selectedUserId,
-        })}
-        key={`vote_user_${index}`}
-        user={user}
-        emoji={user.id === selectedUserId && voteEmoji}
-        showDetails={false}
-        data-action='update'
-        data-params={JSON.stringify({
-          alias: 'leaders',
-          data: { selectedUserId: user.id },
-        })}
-      />
-    ));
+  const renderedUsers = users.slice(startIndex, 8).map((user, index) => (
+    <UserCard
+      className={cn('vote__user', {
+        vote__user_selected: user.id === selectedUserId,
+      })}
+      key={`vote_user_${index}`}
+      user={user}
+      emoji={user.id === selectedUserId && voteEmoji}
+      showDetails={false}
+      data-action='update'
+      data-params={JSON.stringify({
+        alias: 'leaders',
+        data: { selectedUserId: user.id },
+      })}
+    />
+  ));
 
   const isButtonDisabled = {
     [directions.up]: startIndex < step,

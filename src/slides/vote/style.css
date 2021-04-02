@@ -24,7 +24,7 @@
 }
 
 .vote__user .user-card__emoji {
-  top: -6px;
+  top: -4px;
 }
 
 .vote__user:first-of-type {
@@ -35,6 +35,11 @@
 .vote__user:nth-child(5) {
   grid-column: 5;
   grid-row: 1 / -1;
+}
+
+.vote__user:nth-of-type(7),
+.vote__user:nth-of-type(8) {
+  display: none;
 }
 
 .vote__user:hover {
@@ -76,10 +81,10 @@
 
 @media (orientation: portrait) {
   .vote {
-    grid-template: repeat(6, 61px) / repeat(3, 104px);
+    grid-template: 64px 58px 62px 62px 58px 64px / repeat(3, 104px);
     grid-column-gap: 8px;
     grid-row-gap: 22px;
-    padding: 25px 0;
+    padding: 23px 0;
     justify-items: center;
   }
 
@@ -92,7 +97,22 @@
   .vote__button_down {
     grid-column: 2;
     grid-row: 6;
-    margin-bottom: 0;
+    margin-bottom: -3px;
+  }
+
+  .vote__user:nth-of-type(1),
+  .vote__user:nth-of-type(3) {
+    margin-top: 2px;
+  }
+
+  .vote__user:nth-of-type(4),
+  .vote__user:nth-of-type(6) {
+    margin: 2px 0;
+  }
+
+  .vote__user:nth-of-type(7),
+  .vote__user:nth-of-type(8) {
+    margin-bottom: 2px;
   }
 
   .vote__user:nth-of-type(1) {
@@ -126,11 +146,13 @@
   }
 
   .vote__user:nth-of-type(7) {
+    display: block;
     grid-column: 1;
     grid-row: 5 / 7;
   }
 
   .vote__user:nth-of-type(8) {
+    display: block;
     grid-column: 3;
     grid-row: 5 / 7;
   }
