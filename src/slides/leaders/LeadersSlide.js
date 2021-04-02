@@ -14,11 +14,11 @@ const LeadersSlide = props => {
 
   const renderedUsers = users.slice(0, 5).map((user, index) => {
     let userEmoji = null;
-    if (user.id === selectedUserId) {
-      userEmoji = voteEmoji;
+    if (index === 0) {
+      userEmoji = emoji;
     } else {
-      if (index === 0) {
-        userEmoji = emoji;
+      if (user.id === selectedUserId) {
+        userEmoji = voteEmoji;
       }
     }
     return (
