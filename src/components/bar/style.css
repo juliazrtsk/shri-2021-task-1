@@ -12,7 +12,7 @@
   font-size: 20px;
   line-height: 22px;
   text-align: center;
-  color: var(--color-primary_dark);
+  color: var(--color-secondary_dark);
 }
 
 .bar__column {
