@@ -47,7 +47,8 @@
 
 @media (orientation: portrait) {
   .diagram {
-    grid-template: 1fr 1fr / auto;
+    grid-template: 328px auto / auto;
+    grid-row-gap: 15px;
     padding: 32px 24px 24px;
   }
 
