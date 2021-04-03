@@ -23,6 +23,7 @@
   "homepage": "https://github.com/juliazrtsk/shri-2021-task-1#readme",
   "devDependencies": {
     "@babel/core": "7.13.13",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "7.13.12",
     "@babel/preset-react": "7.13.13",
     "babel-eslint": "10.1.0",

@@ -72,6 +72,14 @@
   color: var(--color-primary_light);
 }
 
+.theme_light .commits-category__stats {
+  color: var(--color-secondary_light);
+}
+
+.theme_light .commits-category::after {
+  background-color: var(--color-secondary_light);
+}
+
 .theme_light .commits-category__marker_type_small {
   background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
   box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(131, 131, 131, 0.6);
