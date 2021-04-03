@@ -71,7 +71,10 @@ const LeadersSlide = props => {
           emoji={userEmoji}
         />
         <PrizePodiumColumn place={place} isWinner={isWinner} />
-        {isWinner && !isSelectedUser && renderedSelectedUser}
+        {isWinner &&
+          !isSelectedUser &&
+          selectedUserIndex > 2 &&
+          renderedSelectedUser}
       </div>
     );
   });

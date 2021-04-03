@@ -91,6 +91,12 @@
   padding-right: 20px;
 }
 
+@media (orientation: landscape) {
+  .leaders__selected-user {
+    display: none;
+  }
+}
+
 @media (orientation: portrait) {
   .leaders {
     padding: 70px 24px 0;
