@@ -1070,7 +1070,7 @@ var LeadersSlide = function LeadersSlide(props) {
       users = props.users,
       selectedUserId = props.selectedUserId;
   var selectedUserIndex = null;
-  var selectedUser = users.filter(function (user, index) {
+  var selectedUser = !selectedUserId ? {} : users.filter(function (user, index) {
     var isUserSelected = user.id === selectedUserId;
 
     if (isUserSelected) {
@@ -1087,7 +1087,7 @@ var LeadersSlide = function LeadersSlide(props) {
   var leaders = selectedUserIndex <= 4 ? leadingUsers : [].concat(_toConsumableArray(leadingUsers.slice(0, 4)), [_objectSpread(_objectSpread({}, selectedUser), {}, {
     place: selectedUserIndex + 1
   })]);
-  var renderedSelectedUser = /*#__PURE__*/react.createElement("div", {
+  var renderedSelectedUser = selectedUserId && /*#__PURE__*/react.createElement("div", {
     className: "leaders__selected-user"
   }, /*#__PURE__*/react.createElement(userCard_UserCard, {
     className: classnames_default()('leaders__user-info', 'leaders__selected-user-info'),
@@ -1384,11 +1384,11 @@ var ChartSlide = function ChartSlide(props) {
       subtitle = props.subtitle,
       values = props.values,
       users = props.users;
-  var maxValue = values.reduce(function (acc, cur) {
+  var max = values.reduce(function (acc, cur) {
     return acc > cur.value ? acc : cur.value;
   });
-  var upperBound = getUpperBound(maxValue);
-  var renderedBars = values.slice(4, values.length - 3).map(function (bar, index) {
+  var upperBound = getUpperBound(max);
+  var renderedBars = values.reverse().slice(3, values.length - 4).map(function (bar, index) {
     return /*#__PURE__*/react.createElement(bar_Bar, {
       className: classnames_default()('chart__bar', {
         chart__bar_active: bar.active
@@ -1401,7 +1401,7 @@ var ChartSlide = function ChartSlide(props) {
       description: bar.title
     });
   });
-  var renderedLeaders = users.slice(0, 2).map(function (user, index) {
+  var renderLeaders = users.slice(0, 2).map(function (user, index) {
     return /*#__PURE__*/react.createElement(userCard_UserCard, {
       key: "chart_leader_".concat(index),
       className: "chart__user",
@@ -1419,7 +1419,7 @@ var ChartSlide = function ChartSlide(props) {
     className: "chart__bars"
   }, renderedBars), /*#__PURE__*/react.createElement("div", {
     className: "chart__leaders"
-  }, renderedLeaders)));
+  }, renderLeaders)));
 };
 
 ChartSlide.propTypes = {
