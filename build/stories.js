@@ -838,15 +838,13 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 
 
-const SlideLayout = props => {
-  const {
-    className,
-    title,
-    subtitle,
-    children
-  } = props;
+var SlideLayout = function SlideLayout(props) {
+  var className = props.className,
+      title = props.title,
+      subtitle = props.subtitle,
+      children = props.children;
   return /*#__PURE__*/react.createElement("div", {
-    className: `slide ${className}`
+    className: "slide ".concat(className)
   }, /*#__PURE__*/react.createElement("div", {
     className: "slide__header"
   }, /*#__PURE__*/react.createElement("h1", {
@@ -876,19 +874,14 @@ SlideLayout.defaultProps = {
 
 
 
-const Avatar = props => {
-  const {
-    className,
-    src,
-    alt
-  } = props;
+var Avatar = function Avatar(props) {
+  var className = props.className,
+      src = props.src,
+      alt = props.alt;
   return /*#__PURE__*/react.createElement("img", {
-    className: `avatar ${className}`,
+    className: "avatar ".concat(className),
     alt: alt,
-    srcSet: `./images/1x/${src} 1x,
-               ./images/2x/${src} 2x,
-               ./images/3x/${src} 3x,
-               ./images/4x/${src} 4x`
+    srcSet: "./images/1x/".concat(src, " 1x,\n               ./images/2x/").concat(src, " 2x,\n               ./images/3x/").concat(src, " 3x,\n               ./images/4x/").concat(src, " 4x")
   });
 };
 
@@ -908,13 +901,11 @@ Avatar.defaultProps = {
 
 
 
-const Emoji = props => {
-  const {
-    className,
-    symbol
-  } = props;
+var Emoji = function Emoji(props) {
+  var className = props.className,
+      symbol = props.symbol;
   return /*#__PURE__*/react.createElement("div", {
-    className: `emoji ${className}`
+    className: "emoji ".concat(className)
   }, symbol);
 };
 
@@ -928,33 +919,33 @@ Emoji.defaultProps = {
 };
 /* harmony default export */ const emoji_Emoji = (Emoji);
 ;// CONCATENATED MODULE: ./src/constants/constants.js
-const themes = {
+var themes = {
   light: 'theme_light',
   dark: 'theme_dark'
 };
-const aliases = {
+var aliases = {
   leaders: 'leaders',
   vote: 'vote',
   chart: 'chart',
   diagram: 'diagram',
   activity: 'activity'
 };
-const arrowButtonDirections = {
+var arrowButtonDirections = {
   down: 'down',
   up: 'up'
 };
-const voteEmoji = '👍';
-const userCardSizes = {
+var voteEmoji = '👍';
+var userCardSizes = {
   m: 'medium',
   s: 'small'
 };
-const sprintCommitsCategory = {
+var sprintCommitsCategory = {
   xl: 'extra-large',
   l: 'large',
   m: 'medium',
   s: 'small'
 };
-const screenOrientation = {
+var screenOrientation = {
   vertical: 'vertical',
   horizontal: 'horizontal'
 };
@@ -966,16 +957,14 @@ const screenOrientation = {
 
 
 
-const UserCard = props => {
-  const {
-    className,
-    user,
-    emoji,
-    showDetails,
-    size
-  } = props;
+var UserCard = function UserCard(props) {
+  var className = props.className,
+      user = props.user,
+      emoji = props.emoji,
+      showDetails = props.showDetails,
+      size = props.size;
   return /*#__PURE__*/react.createElement("div", {
-    className: `user-card user-card_size_${size} ${className}`,
+    className: "user-card user-card_size_".concat(size, " ").concat(className),
     "data-action": props['data-action'],
     "data-params": props['data-params']
   }, emoji && /*#__PURE__*/react.createElement(emoji_Emoji, {
@@ -984,7 +973,7 @@ const UserCard = props => {
   }), /*#__PURE__*/react.createElement(avatar_Avatar, {
     className: "user-card__avatar",
     src: user.avatar,
-    alt: `avatar ${user.name}`
+    alt: "avatar ".concat(user.name)
   }), /*#__PURE__*/react.createElement("div", {
     className: "user-card__name"
   }, user.name), showDetails && /*#__PURE__*/react.createElement("div", {
@@ -1024,11 +1013,9 @@ var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 
 
-const PrizePodiumColumn = props => {
-  const {
-    place,
-    isWinner
-  } = props;
+var PrizePodiumColumn = function PrizePodiumColumn(props) {
+  var place = props.place,
+      isWinner = props.isWinner;
   return /*#__PURE__*/react.createElement("div", {
     className: classnames_default()('prize-podium-column', {
       'prize-podium-column_winner': isWinner
@@ -1056,16 +1043,14 @@ PrizePodiumColumn.defaultProps = {
 
 
 
-const LeadersSlide = props => {
-  const {
-    title,
-    subtitle,
-    emoji,
-    users,
-    selectedUserId
-  } = props;
-  const renderedUsers = users.slice(0, 5).map((user, index) => {
-    let userEmoji = null;
+var LeadersSlide = function LeadersSlide(props) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      emoji = props.emoji,
+      users = props.users,
+      selectedUserId = props.selectedUserId;
+  var renderedUsers = users.slice(0, 5).map(function (user, index) {
+    var userEmoji = null;
 
     if (index === 0) {
       userEmoji = emoji;
@@ -1076,8 +1061,8 @@ const LeadersSlide = props => {
     }
 
     return /*#__PURE__*/react.createElement("div", {
-      className: `leaders__user leaders__user_place_${index + 1}`,
-      key: `leaders_user_${index}`
+      className: "leaders__user leaders__user_place_".concat(index + 1),
+      key: "leaders_user_".concat(index)
     }, /*#__PURE__*/react.createElement(userCard_UserCard, {
       className: "leaders__user-info",
       user: user,
@@ -1101,7 +1086,7 @@ LeadersSlide.propTypes = {
   selectedUserId: (prop_types_default()).number,
   emoji: (prop_types_default()).string,
   users: prop_types_default().arrayOf(prop_types_default().shape({
-    id: (prop_types_default()).string,
+    id: (prop_types_default()).number,
     name: (prop_types_default()).string,
     avatar: (prop_types_default()).string,
     valueText: (prop_types_default()).string
@@ -1122,15 +1107,13 @@ LeadersSlide.defaultProps = {
 
 
 
-const ArrowButton = props => {
-  const {
-    className,
-    direction,
-    onClick,
-    disabled
-  } = props;
+var ArrowButton = function ArrowButton(props) {
+  var className = props.className,
+      direction = props.direction,
+      onClick = props.onClick,
+      disabled = props.disabled;
   return /*#__PURE__*/react.createElement("button", {
-    className: classnames_default()('arrow-button', `arrow-button__direction_${direction}`, className),
+    className: classnames_default()('arrow-button', "arrow-button__direction_".concat(direction), className),
     onClick: onClick,
     disabled: disabled,
     "data-action": props['data-action'],
@@ -1149,7 +1132,7 @@ ArrowButton.propTypes = {
 ArrowButton.defaultProps = {
   className: '',
   direction: arrowButtonDirections.up,
-  onClick: () => {},
+  onClick: function onClick() {},
   disabled: false,
   'data-action': '',
   'data-params': ''
@@ -1157,21 +1140,22 @@ ArrowButton.defaultProps = {
 /* harmony default export */ const arrowButton_ArrowButton = (ArrowButton);
 ;// CONCATENATED MODULE: ./src/utils/getSettings.js
 
-const getSettings = () => {
-  const params = new URLSearchParams(window.location.search);
-  const slide = params.get('slide') || 1;
-  const theme = params.get('theme') || 'dark';
+var getSettings = function getSettings() {
+  var params = new URLSearchParams(window.location.search);
+  var slide = params.get('slide') || 1;
+  var theme = params.get('theme') || 'dark';
   return {
-    slide,
-    theme
+    slide: slide,
+    theme: theme
   };
 };
-const getScreenOrientation = () => {
+var getScreenOrientation = function getScreenOrientation() {
   if (window.innerHeight > window.innerWidth) {
     return screenOrientation.vertical;
   } else return screenOrientation.horizontal;
 };
 ;// CONCATENATED MODULE: ./src/slides/vote/VoteSlide.js
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -1181,65 +1165,67 @@ const getScreenOrientation = () => {
 
 
 
-const offsetStep = {
+
+var offsetStep = {
   vertical: 8,
   horizontal: 6
 };
 
-const VoteSlide = props => {
-  const {
-    title,
-    subtitle,
-    users,
-    offset,
-    selectedUserId
-  } = props;
-  const step = offsetStep[getScreenOrientation()];
-  let startIndex = 0;
+var VoteSlide = function VoteSlide(props) {
+  var _isButtonDisabled;
 
-  for (let i = 0; i < users.length; i++) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      users = props.users,
+      offset = props.offset,
+      selectedUserId = props.selectedUserId;
+  var step = offsetStep[getScreenOrientation()];
+  var startIndex = 0;
+
+  for (var i = 0; i < users.length; i++) {
     if (users[i].id === offset) {
       startIndex = i;
       break;
     }
   }
 
-  const renderedUsers = users.slice(startIndex, 8).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
-    className: classnames_default()('vote__user', {
-      vote__user_selected: user.id === selectedUserId
-    }),
-    key: `vote_user_${index}`,
-    user: user,
-    emoji: user.id === selectedUserId && voteEmoji,
-    showDetails: false,
-    "data-action": "update",
-    "data-params": JSON.stringify({
-      alias: 'leaders',
-      data: {
-        selectedUserId: user.id
-      }
-    })
-  }));
-  const isButtonDisabled = {
-    [arrowButtonDirections.up]: startIndex < step,
-    [arrowButtonDirections.down]: startIndex + step >= users.length
+  var renderedUsers = users.slice(startIndex, 8).map(function (user, index) {
+    return /*#__PURE__*/react.createElement(userCard_UserCard, {
+      className: classnames_default()('vote__user', {
+        vote__user_selected: user.id === selectedUserId
+      }),
+      key: "vote_user_".concat(index),
+      user: user,
+      emoji: user.id === selectedUserId ? voteEmoji : '',
+      showDetails: false,
+      "data-action": "update",
+      "data-params": JSON.stringify({
+        alias: 'leaders',
+        data: {
+          selectedUserId: user.id
+        }
+      })
+    });
+  });
+  var isButtonDisabled = (_isButtonDisabled = {}, _defineProperty(_isButtonDisabled, arrowButtonDirections.up, startIndex < step), _defineProperty(_isButtonDisabled, arrowButtonDirections.down, startIndex + step >= users.length), _isButtonDisabled);
+
+  var renderButton = function renderButton(dir, startUserId) {
+    return /*#__PURE__*/react.createElement(arrowButton_ArrowButton, {
+      className: "vote__button vote__button_".concat(dir),
+      direction: dir,
+      disabled: isButtonDisabled[dir],
+      "data-action": "update",
+      "data-params": JSON.stringify({
+        alias: 'vote',
+        data: {
+          offset: startUserId
+        }
+      })
+    });
   };
 
-  const renderButton = (dir, startUserId) => /*#__PURE__*/react.createElement(arrowButton_ArrowButton, {
-    className: `vote__button vote__button_${dir}`,
-    direction: dir,
-    disabled: isButtonDisabled[dir],
-    "data-action": "update",
-    "data-params": JSON.stringify({
-      alias: 'vote',
-      data: {
-        offset: startUserId
-      }
-    })
-  });
-
-  const getNewOffset = step => {
-    let newIndex = startIndex + step;
+  var getNewOffset = function getNewOffset(step) {
+    var newIndex = startIndex + step;
 
     if (newIndex < 0) {
       newIndex = 0;
@@ -1271,7 +1257,7 @@ VoteSlide.propTypes = {
   selectedUserId: (prop_types_default()).number,
   emoji: (prop_types_default()).string,
   users: prop_types_default().arrayOf(prop_types_default().shape({
-    id: (prop_types_default()).string,
+    id: (prop_types_default()).number,
     name: (prop_types_default()).string,
     avatar: (prop_types_default()).string,
     valueText: (prop_types_default()).string
@@ -1292,12 +1278,10 @@ VoteSlide.defaultProps = {
 
 
 
-const Bar = props => {
-  const {
-    className,
-    value,
-    description
-  } = props;
+var Bar = function Bar(props) {
+  var className = props.className,
+      value = props.value,
+      description = props.description;
   return /*#__PURE__*/react.createElement("div", {
     className: classnames_default()('bar', className)
   }, /*#__PURE__*/react.createElement("div", {
@@ -1305,7 +1289,7 @@ const Bar = props => {
   }, value.text || ''), /*#__PURE__*/react.createElement("div", {
     className: "bar__column",
     style: {
-      height: `${value.percentage}%`
+      height: "".concat(value.percentage, "%")
     }
   }), /*#__PURE__*/react.createElement("div", {
     className: "bar__description"
@@ -1339,38 +1323,42 @@ Bar.defaultProps = {
 
 
 
-const getUpperBound = num => {
-  const pow = num.toString().length - 1;
-  return Math.ceil(num / 10 ** pow) * 10 ** pow;
+var getUpperBound = function getUpperBound(num) {
+  var pow = num.toString().length - 1;
+  return Math.ceil(num / Math.pow(10, pow)) * Math.pow(10, pow);
 };
 
-const ChartSlide = props => {
-  const {
-    title,
-    subtitle,
-    values,
-    users
-  } = props;
-  const maxValue = values.reduce((acc, cur) => acc > cur.value ? acc : cur.value);
-  const upperBound = getUpperBound(maxValue);
-  const renderedBars = values.slice(4, values.length - 3).map((bar, index) => /*#__PURE__*/react.createElement(bar_Bar, {
-    className: classnames_default()('chart__bar', {
-      chart__bar_active: bar.active
-    }),
-    key: `${title}_${index}`,
-    value: {
-      text: bar.value,
-      percentage: (bar.value / upperBound * 70).toFixed(2)
-    },
-    description: bar.title
-  }));
-  const renderedLeaders = users.slice(0, 2).map((user, index) => /*#__PURE__*/react.createElement(userCard_UserCard, {
-    key: `chart_leader_${index}`,
-    className: "chart__user",
-    user: user,
-    size: userCardSizes.s,
-    showDetails: true
-  }));
+var ChartSlide = function ChartSlide(props) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      values = props.values,
+      users = props.users;
+  var maxValue = values.reduce(function (acc, cur) {
+    return acc > cur.value ? acc : cur.value;
+  });
+  var upperBound = getUpperBound(maxValue);
+  var renderedBars = values.slice(4, values.length - 3).map(function (bar, index) {
+    return /*#__PURE__*/react.createElement(bar_Bar, {
+      className: classnames_default()('chart__bar', {
+        chart__bar_active: bar.active
+      }),
+      key: "".concat(title, "_").concat(index),
+      value: {
+        text: bar.value,
+        percentage: (bar.value / upperBound * 70).toFixed(2)
+      },
+      description: bar.title
+    });
+  });
+  var renderedLeaders = users.slice(0, 2).map(function (user, index) {
+    return /*#__PURE__*/react.createElement(userCard_UserCard, {
+      key: "chart_leader_".concat(index),
+      className: "chart__user",
+      user: user,
+      size: userCardSizes.s,
+      showDetails: true
+    });
+  });
   return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
     title: title,
     subtitle: subtitle
@@ -1392,7 +1380,7 @@ ChartSlide.propTypes = {
     active: (prop_types_default()).bool
   })),
   users: prop_types_default().arrayOf(prop_types_default().shape({
-    id: (prop_types_default()).string,
+    id: (prop_types_default()).number,
     name: (prop_types_default()).string,
     avatar: (prop_types_default()).string,
     valueText: (prop_types_default()).string
@@ -1412,18 +1400,16 @@ ChartSlide.defaultProps = {
 
 
 
-const CommitsCategory = props => {
-  const {
-    className,
-    type,
-    title,
-    value,
-    diff
-  } = props;
+var CommitsCategory = function CommitsCategory(props) {
+  var className = props.className,
+      type = props.type,
+      title = props.title,
+      value = props.value,
+      diff = props.diff;
   return /*#__PURE__*/react.createElement("div", {
     className: classnames_default()('commits-category', className)
   }, /*#__PURE__*/react.createElement("div", {
-    className: classnames_default()('commits-category__marker', `commits-category__marker_type_${type}`)
+    className: classnames_default()('commits-category__marker', "commits-category__marker_type_".concat(type))
   }), /*#__PURE__*/react.createElement("div", {
     className: "commits-category__title"
   }, title), /*#__PURE__*/react.createElement("div", {
@@ -1458,24 +1444,21 @@ CommitsCategory.defaultProps = {
 
 
 
-const Diagram = props => {
-  const {
-    title,
-    subtitle,
-    totalText,
-    differenceText,
-    categories
-  } = props;
-  const categoriesTypes = Object.values(sprintCommitsCategory);
-  const renderedCategories = categories.map(({
-    title,
-    valueText,
-    differenceText
-  }, index) => {
-    const value = valueText.split(' ')[0];
-    const diff = differenceText.split(' ')[0];
+var Diagram = function Diagram(props) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      totalText = props.totalText,
+      differenceText = props.differenceText,
+      categories = props.categories;
+  var categoriesTypes = Object.values(sprintCommitsCategory);
+  var renderedCategories = categories.map(function (_ref, index) {
+    var title = _ref.title,
+        valueText = _ref.valueText,
+        differenceText = _ref.differenceText;
+    var value = valueText.split(' ')[0];
+    var diff = differenceText.split(' ')[0];
     return /*#__PURE__*/react.createElement(commitsCategory_CommitsCategory, {
-      key: `diagram_cat_${index}`,
+      key: "diagram_cat_".concat(index),
       className: "diagram__category",
       type: categoriesTypes[index],
       title: title,
@@ -1521,26 +1504,44 @@ Diagram.defaultProps = {
 };
 /* harmony default export */ const diagram_Diagram = (Diagram);
 ;// CONCATENATED MODULE: ./src/slides/activity/Activity.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Activity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function Activity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
-const steps = {
+
+var steps = {
   horizontal: 17,
   vertical: 13
 };
-const commitLegendBounds = {
+var commitLegendBounds = {
   min: [0],
   mid: [1, 2],
   max: [3, 4],
   extra: [5, 6]
 };
 
-const sumCommitsForTwoHours = hours => {
-  let result = [];
-  result = hours.reduce((acc, cur, index) => {
+var sumCommitsForTwoHours = function sumCommitsForTwoHours(hours) {
+  var result = [];
+  result = hours.reduce(function (acc, cur, index) {
     if (index % 2 !== 0) {
       acc[acc.length - 1] += cur;
     } else {
@@ -1552,19 +1553,17 @@ const sumCommitsForTwoHours = hours => {
   return result;
 };
 
-const horizontalPreparation = data => {
-  const days = Object.keys(data);
-  return days.reduce((acc, day) => {
-    return { ...acc,
-      [day]: sumCommitsForTwoHours(data[day])
-    };
+var horizontalPreparation = function horizontalPreparation(data) {
+  var days = Object.keys(data);
+  return days.reduce(function (acc, day) {
+    return _objectSpread(_objectSpread({}, acc), {}, Activity_defineProperty({}, day, sumCommitsForTwoHours(data[day])));
   }, {});
 };
 
-const splitDayOnTwoHalves = hours => {
-  let firstHalf = [];
-  let secondHalf = [];
-  hours.forEach((hour, index) => {
+var splitDayOnTwoHalves = function splitDayOnTwoHalves(hours) {
+  var firstHalf = [];
+  var secondHalf = [];
+  hours.forEach(function (hour, index) {
     if (index % 2 === 0) {
       firstHalf.push(hour);
     } else {
@@ -1574,22 +1573,29 @@ const splitDayOnTwoHalves = hours => {
   return [firstHalf, secondHalf];
 };
 
-const verticalPreparation = data => {
-  const days = Object.keys(data);
-  return days.reduce((acc, day) => {
-    const [first, second] = splitDayOnTwoHalves(data[day]);
-    return { ...acc,
-      [`${day}_1`]: first,
-      [`${day}_2`]: second
-    };
+var verticalPreparation = function verticalPreparation(data) {
+  var days = Object.keys(data);
+  return days.reduce(function (acc, day) {
+    var _objectSpread3;
+
+    var _splitDayOnTwoHalves = splitDayOnTwoHalves(data[day]),
+        _splitDayOnTwoHalves2 = _slicedToArray(_splitDayOnTwoHalves, 2),
+        first = _splitDayOnTwoHalves2[0],
+        second = _splitDayOnTwoHalves2[1];
+
+    return _objectSpread(_objectSpread({}, acc), {}, (_objectSpread3 = {}, Activity_defineProperty(_objectSpread3, "".concat(day, "_1"), first), Activity_defineProperty(_objectSpread3, "".concat(day, "_2"), second), _objectSpread3));
   }, {});
 };
 
-const dataPreparators = {
-  vertical: data => verticalPreparation(data),
-  horizontal: data => horizontalPreparation(data)
+var dataPreparators = {
+  vertical: function vertical(data) {
+    return verticalPreparation(data);
+  },
+  horizontal: function horizontal(data) {
+    return horizontalPreparation(data);
+  }
 };
-const bars = {
+var bars = {
   min_dark: './images/min-dark.svg',
   mid_dark: './images/mid-dark.svg',
   max_dark: './images/max-dark.svg',
@@ -1600,77 +1606,78 @@ const bars = {
   extra_light: './images/extra-light.svg'
 };
 
-const Activity = props => {
-  const {
-    title,
-    subtitle,
-    data
-  } = props;
-  const {
-    theme
-  } = getSettings();
-  const orientation = getScreenOrientation();
-  const renderedLegend = Object.keys(commitLegendBounds).map((key, index) => {
-    const bounds = commitLegendBounds[key] || [];
-    const value = bounds.length > 1 ? `${bounds[0]} — ${bounds[1]}` : bounds[0];
+var Activity = function Activity(props) {
+  var title = props.title,
+      subtitle = props.subtitle,
+      data = props.data;
+
+  var _getSettings = getSettings(),
+      theme = _getSettings.theme;
+
+  var orientation = getScreenOrientation();
+  var renderedLegend = Object.keys(commitLegendBounds).map(function (key, index) {
+    var bounds = commitLegendBounds[key] || [];
+    var value = bounds.length > 1 ? "".concat(bounds[0], " \u2014 ").concat(bounds[1]) : bounds[0];
     return /*#__PURE__*/react.createElement("div", {
       className: "activity__legend-item",
-      key: `legend_${index}`
+      key: "legend_".concat(index)
     }, /*#__PURE__*/react.createElement("div", {
-      className: classnames_default()('activity__legend-marker', `activity__legend-marker_type_${key}`)
+      className: classnames_default()('activity__legend-marker', "activity__legend-marker_type_".concat(key))
     }), /*#__PURE__*/react.createElement("div", {
       className: "activity__legend-value"
     }, value));
   });
-  const preparator = dataPreparators[orientation];
+  var preparator = dataPreparators[orientation];
 
-  const renderDayChain = day => day.map((barValue, index) => {
-    let type = '';
+  var renderDayChain = function renderDayChain(day) {
+    return day.map(function (barValue, index) {
+      var type = '';
 
-    if (commitLegendBounds.min.includes(barValue)) {
-      type = 'min';
-    }
+      if (commitLegendBounds.min.includes(barValue)) {
+        type = 'min';
+      }
 
-    if (commitLegendBounds.mid.includes(barValue)) {
-      type = 'mid';
-    }
+      if (commitLegendBounds.mid.includes(barValue)) {
+        type = 'mid';
+      }
 
-    if (commitLegendBounds.max.includes(barValue)) {
-      type = 'max';
-    }
+      if (commitLegendBounds.max.includes(barValue)) {
+        type = 'max';
+      }
 
-    if (commitLegendBounds.extra.includes(barValue)) {
-      type = 'extra';
-    }
+      if (commitLegendBounds.extra.includes(barValue)) {
+        type = 'extra';
+      }
 
-    return /*#__PURE__*/react.createElement("img", {
-      key: `activity_bar_${index}`,
-      className: "activity__bar",
-      src: bars[`${type}_${theme}`],
-      alt: type
+      return /*#__PURE__*/react.createElement("img", {
+        key: "activity_bar_".concat(index),
+        className: "activity__bar",
+        src: bars["".concat(type, "_").concat(theme)],
+        alt: type
+      });
     });
-  });
+  };
 
-  const preparedData = preparator(data);
+  var preparedData = preparator(data);
 
-  const getOffsetStyles = index => {
+  var getOffsetStyles = function getOffsetStyles(index) {
     if (orientation === 'horizontal') {
       return {
-        top: `${steps.vertical * index}px`,
-        left: index % 2 ? `${steps.horizontal}px` : 0
+        top: "".concat(steps.vertical * index, "px"),
+        left: index % 2 ? "".concat(steps.horizontal, "px") : 0
       };
     }
 
     return {
-      bottom: index % 2 ? `${steps.vertical}px` : 0,
-      right: `${steps.horizontal * index}px`
+      bottom: index % 2 ? "".concat(steps.vertical, "px") : 0,
+      right: "".concat(steps.horizontal * index, "px")
     };
   };
 
-  const renderedBars = Object.keys(preparedData).map((day, index) => {
+  var renderedBars = Object.keys(preparedData).map(function (day, index) {
     return /*#__PURE__*/react.createElement("div", {
-      className: classnames_default()('activity__day', `activity__day_${orientation}`),
-      key: `activity_day_${index}`,
+      className: classnames_default()('activity__day', "activity__day_".concat(orientation)),
+      key: "activity_day_".concat(index),
       style: getOffsetStyles(index)
     }, renderDayChain(preparedData[day]));
   });
@@ -1720,6 +1727,9 @@ Activity.defaultProps = {
 };
 /* harmony default export */ const activity_Activity = (Activity);
 ;// CONCATENATED MODULE: ./src/templates/templateRenderer.js
+var _slideMap;
+
+function templateRenderer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -1727,13 +1737,9 @@ Activity.defaultProps = {
 
 
 
-const slideMap = {
-  [aliases.leaders]: data => leaders_LeadersSlide(data),
-  [aliases.vote]: data => vote_VoteSlide(data),
-  [aliases.chart]: data => chart_ChartSlide(data),
-  [aliases.diagram]: data => diagram_Diagram(data),
-  [aliases.activity]: data => activity_Activity(data)
-};
+
+
+var slideMap = (_slideMap = {}, templateRenderer_defineProperty(_slideMap, aliases.leaders, leaders_LeadersSlide), templateRenderer_defineProperty(_slideMap, aliases.vote, vote_VoteSlide), templateRenderer_defineProperty(_slideMap, aliases.chart, chart_ChartSlide), templateRenderer_defineProperty(_slideMap, aliases.diagram, diagram_Diagram), templateRenderer_defineProperty(_slideMap, aliases.activity, activity_Activity), _slideMap);
 window.renderTemplate = renderTemplate;
 
 function renderTemplate(alias, data) {
@@ -1742,40 +1748,62 @@ function renderTemplate(alias, data) {
     return;
   }
 
-  const renderSlide = slideMap[alias];
-  const slide = renderSlide(data);
-  return server_browser.renderToString(slide);
+  var Slide = slideMap[alias];
+  return server_browser.renderToString( /*#__PURE__*/react.createElement(Slide, data));
 }
 
 /* harmony default export */ const templateRenderer = (renderTemplate);
 ;// CONCATENATED MODULE: ./src/App.js
+function App_slicedToArray(arr, i) { return App_arrayWithHoles(arr) || App_iterableToArrayLimit(arr, i) || App_unsupportedIterableToArray(arr, i) || App_nonIterableRest(); }
+
+function App_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function App_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return App_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return App_arrayLikeToArray(o, minLen); }
+
+function App_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function App_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function App_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
-const App = () => {
-  const {
-    slide,
-    theme
-  } = getSettings();
-  const [slidesData, setSlidesData] = (0,react.useState)(null);
-  const [slideMarkup, setSlideMarkup] = (0,react.useState)(null);
-  (0,react.useEffect)(() => {
-    fetch('./data.json').then(response => response.json()).then(data => setSlidesData(data));
+
+var App = function App() {
+  var _getSettings = getSettings(),
+      slide = _getSettings.slide,
+      theme = _getSettings.theme;
+
+  var _useState = (0,react.useState)(null),
+      _useState2 = App_slicedToArray(_useState, 2),
+      slidesData = _useState2[0],
+      setSlidesData = _useState2[1];
+
+  var _useState3 = (0,react.useState)(null),
+      _useState4 = App_slicedToArray(_useState3, 2),
+      slideMarkup = _useState4[0],
+      setSlideMarkup = _useState4[1];
+
+  (0,react.useEffect)(function () {
+    fetch('./data.json').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setSlidesData(data);
+    });
   }, []);
-  (0,react.useEffect)(() => {
+  (0,react.useEffect)(function () {
     if (slidesData) {
-      const {
-        alias,
-        data
-      } = slidesData[slide - 1];
-      const markup = templateRenderer(alias, data);
+      var _slidesData = slidesData[slide - 1],
+          alias = _slidesData.alias,
+          data = _slidesData.data;
+      var markup = templateRenderer(alias, data);
       setSlideMarkup(markup);
     }
   }, [slidesData, slide]);
   return /*#__PURE__*/react.createElement("div", {
-    className: `stories ${themes[theme] || themes.dark}`,
+    className: "stories ".concat(themes[theme] || themes.dark),
     dangerouslySetInnerHTML: {
       __html: slideMarkup
     }

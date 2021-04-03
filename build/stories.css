@@ -694,8 +694,10 @@
   position: relative;
   display: grid;
   grid-template-columns: 17px auto auto;
-  grid-column-gap: 10px;
-  padding: 16px 0;
+  grid-column-gap: 9px;
+  padding: 17px 0;
+  align-items: center;
+  font-weight: 500;
 }
 
 .commits-category::after {
@@ -753,13 +755,21 @@
 }
 
 .commits-category__diff {
-  margin-right: 16px;
+  margin-right: 17px;
 }
 
 .commits-category__value {}
 
 .theme_light .commits-category__title {
   color: var(--color-primary_light);
+}
+
+.theme_light .commits-category__stats {
+  color: var(--color-secondary_light);
+}
+
+.theme_light .commits-category::after {
+  background-color: var(--color-secondary_light);
 }
 
 .theme_light .commits-category__marker_type_small {
@@ -784,7 +794,7 @@
 
 .diagram {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Todo: fix according to spec */
+  grid-template-columns: 240px auto;
   grid-column-gap: 40px;
   align-items: center;
   height: 100%;
@@ -801,6 +811,7 @@
 }
 
 .diagram__total {
+  margin-bottom: 6px;
   font-weight: 700;
   font-size: 20px;
   line-height: 22px;
@@ -830,7 +841,8 @@
 
 @media (orientation: portrait) {
   .diagram {
-    grid-template: 1fr 1fr / auto;
+    grid-template: 328px auto / auto;
+    grid-row-gap: 15px;
     padding: 32px 24px 24px;
   }
 
@@ -874,7 +886,7 @@
 }
 
 .activity__bar {
-  width: 34px; /*Задавать можно по размерам экрана*/
+  width: 34px;
 }
 
 .activity__day {
