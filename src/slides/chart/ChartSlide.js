@@ -17,26 +17,28 @@ const getUpperBound = num => {
 
 const ChartSlide = props => {
   const { title, subtitle, values, users } = props;
-  const maxValue = values.reduce((acc, cur) =>
-    acc > cur.value ? acc : cur.value
-  );
-  const upperBound = getUpperBound(maxValue);
 
-  const renderedBars = values.slice(4, values.length - 3).map((bar, index) => (
-    <Bar
-      className={cn('chart__bar', {
-        chart__bar_active: bar.active,
-      })}
-      key={`${title}_${index}`}
-      value={{
-        text: bar.value,
-        percentage: ((bar.value / upperBound) * 70).toFixed(2),
-      }}
-      description={bar.title}
-    />
-  ));
+  const max = values.reduce((acc, cur) => (acc > cur.value ? acc : cur.value));
+  const upperBound = getUpperBound(max);
 
-  const renderedLeaders = users
+  const renderedBars = values
+    .reverse()
+    .slice(3, values.length - 4)
+    .map((bar, index) => (
+      <Bar
+        className={cn('chart__bar', {
+          chart__bar_active: bar.active,
+        })}
+        key={`${title}_${index}`}
+        value={{
+          text: bar.value,
+          percentage: ((bar.value / upperBound) * 70).toFixed(2),
+        }}
+        description={bar.title}
+      />
+    ));
+
+  const renderLeaders = users
     .slice(0, 2)
     .map((user, index) => (
       <UserCard
@@ -52,7 +54,7 @@ const ChartSlide = props => {
     <SlideLayout title={title} subtitle={subtitle}>
       <div className='chart'>
         <div className='chart__bars'>{renderedBars}</div>
-        <div className='chart__leaders'>{renderedLeaders}</div>
+        <div className='chart__leaders'>{renderLeaders}</div>
       </div>
     </SlideLayout>
   );

@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  direction: rtl;
 }
 
 .chart__bar_active .bar__value {
@@ -71,7 +72,6 @@
 
   .chart__bars {
     overflow-x: scroll;
-    padding: 0 24px;
   }
 
   .chart__bar {
@@ -79,10 +79,14 @@
     position: relative;
   }
 
-  .chart__bar:last-child::after {
+  .chart__bar:first-of-type {
+    margin-right: 24px;
+  }
+
+  .chart__bar:last-of-type::after {
     position: absolute;
     display: block;
-    right: -24px;
+    left: -24px;
     width: 24px;
     height: 100%;
     content: '';
