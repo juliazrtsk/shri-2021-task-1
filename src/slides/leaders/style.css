@@ -133,6 +133,12 @@
   }
 }
 
+@media (max-width: 660px) {
+  .leaders {
+    padding: 26px 30px 0;
+  }
+}
+
 @media (max-width: 570px) {
   .leaders__user_place_5,
   .leaders__user_place_4 {
