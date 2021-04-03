@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import SlideLayout from 'src/templates/slideLayout/SlideLayout';
-import { getScreenOrientation, getSettings } from 'src/utils/getSettings';
+import { getScreenOrientation } from 'src/utils/getSettings';
 
 import './style.css';
 
@@ -69,21 +69,9 @@ const dataPreparators = {
   horizontal: data => horizontalPreparation(data),
 };
 
-const bars = {
-  min_dark: './images/min-dark.svg',
-  mid_dark: './images/mid-dark.svg',
-  max_dark: './images/max-dark.svg',
-  extra_dark: './images/extra-dark.svg',
-  min_light: './images/min-light.svg',
-  mid_light: './images/mid-light.svg',
-  max_light: './images/max-light.svg',
-  extra_light: './images/extra-light.svg',
-};
-
 const Activity = props => {
   const { title, subtitle, data } = props;
 
-  const { theme } = getSettings();
   const orientation = getScreenOrientation();
 
   const renderedLegend = Object.keys(commitLegendBounds).map((key, index) => {
@@ -120,11 +108,9 @@ const Activity = props => {
         type = 'extra';
       }
       return (
-        <img
+        <div
           key={`activity_bar_${index}`}
-          className='activity__bar'
-          src={bars[`${type}_${theme}`]}
-          alt={type}
+          className={cn('activity__bar', `activity__bar_${type}`)}
         />
       );
     });

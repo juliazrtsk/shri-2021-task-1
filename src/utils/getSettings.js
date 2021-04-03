@@ -1,9 +1,9 @@
-import { screenOrientation } from 'src/constants/constants';
+import { defaultTheme, screenOrientation } from 'src/constants/constants';
 
 export const getSettings = () => {
   const params = new URLSearchParams(window.location.search);
   const slide = params.get('slide') || 1;
-  const theme = params.get('theme') || 'dark';
+  const theme = params.get('theme') || defaultTheme;
   return { slide, theme };
 };
 

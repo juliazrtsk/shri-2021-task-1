@@ -18,6 +18,39 @@
 
 .activity__bar {
   width: 34px;
+  height: 74px;
+}
+
+.activity__bar_min {
+  background: url('~images/activity_bars/min-dark.svg') no-repeat bottom;
+}
+
+.activity__bar_mid {
+  background: url('~images/activity_bars/mid-dark.svg') no-repeat bottom;
+}
+
+.activity__bar_max {
+  background: url('~images/activity_bars/max-dark.svg') no-repeat bottom;
+}
+
+.activity__bar_extra {
+  background: url('~images/activity_bars/extra-dark.svg') no-repeat bottom;
+}
+
+.theme_light .activity__bar_min {
+  background: url('~images/activity_bars/min-light.svg') no-repeat bottom;
+}
+
+.theme_light .activity__bar_mid {
+  background: url('~images/activity_bars/mid-light.svg') no-repeat bottom;
+}
+
+.theme_light .activity__bar_max {
+  background: url('~images/activity_bars/max-light.svg') no-repeat bottom;
+}
+
+.theme_light .activity__bar_extra {
+  background: url('~images/activity_bars/extra-light.svg') no-repeat bottom;
 }
 
 .activity__day {
@@ -39,7 +72,7 @@
   grid-template: auto auto / repeat(5, 1fr);
   grid-column-gap: 8px;
   box-sizing: border-box;
-  padding: 0 46px;
+  padding: 0 48px;
 }
 
 .activity__legend-item {
@@ -142,9 +175,15 @@
   color: var(--color-secondary_light);
 }
 
+@media (max-width: 570px) and (orientation: landscape) {
+  .activity {
+    padding: 15px 120px 58px;
+  }
+}
+
 @media (orientation: portrait) {
   .activity {
-    padding: 0 0 24px;
+    padding: 0 24px 24px;
     grid-template: auto auto / auto;
     grid-row-gap: 32px;
     height: 100%;
@@ -156,8 +195,13 @@
     height: 408px;
   }
 
+  .activity__bar {
+    width: 44px;
+    height: 95px;
+  }
+
   .activity__legend {
-    padding: 0 24px;
+    padding: 0;
   }
 
   .activity__legend-value {

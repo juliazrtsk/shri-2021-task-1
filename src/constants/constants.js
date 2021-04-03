@@ -3,6 +3,8 @@ export const themes = {
   dark: 'theme_dark',
 };
 
+export const defaultTheme = 'dark';
+
 export const aliases = {
   leaders: 'leaders',
   vote: 'vote',
