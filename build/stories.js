@@ -1240,7 +1240,7 @@ var VoteSlide = function VoteSlide(props) {
     }
   }
 
-  var renderedUsers = users.slice(startIndex, 8).map(function (user, index) {
+  var renderedUsers = users.slice(startIndex, startIndex + 8).map(function (user, index) {
     return /*#__PURE__*/react.createElement(userCard_UserCard, {
       className: classnames_default()('vote__user', {
         vote__user_selected: user.id === selectedUserId
@@ -1258,7 +1258,7 @@ var VoteSlide = function VoteSlide(props) {
       })
     });
   });
-  var isButtonDisabled = (_isButtonDisabled = {}, VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.up, startIndex < step), VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.down, startIndex + step >= users.length), _isButtonDisabled);
+  var isButtonDisabled = (_isButtonDisabled = {}, VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.up, startIndex === 0), VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.down, startIndex + step >= users.length), _isButtonDisabled);
 
   var renderButton = function renderButton(dir, startUserId) {
     return /*#__PURE__*/react.createElement(arrowButton_ArrowButton, {
@@ -1282,12 +1282,12 @@ var VoteSlide = function VoteSlide(props) {
       newIndex = 0;
     }
 
-    if (newIndex === users.length) {
-      newIndex--;
-    }
-
     if (newIndex > users.length) {
       newIndex = users.length - users.length % step;
+    }
+
+    if (newIndex === users.length) {
+      newIndex--;
     }
 
     return users[newIndex].id;
