@@ -1,6 +1,6 @@
 .diagram {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Todo: fix according to spec */
+  grid-template-columns: 240px auto;
   grid-column-gap: 40px;
   align-items: center;
   height: 100%;
@@ -17,6 +17,7 @@
 }
 
 .diagram__total {
+  margin-bottom: 6px;
   font-weight: 700;
   font-size: 20px;
   line-height: 22px;
