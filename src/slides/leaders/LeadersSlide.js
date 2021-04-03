@@ -14,13 +14,15 @@ const LeadersSlide = props => {
   const { title, subtitle, emoji, users, selectedUserId } = props;
 
   let selectedUserIndex = null;
-  const selectedUser = users.filter((user, index) => {
-    const isUserSelected = user.id === selectedUserId;
-    if (isUserSelected) {
-      selectedUserIndex = index;
-    }
-    return isUserSelected;
-  })[0];
+  const selectedUser = !selectedUserId
+    ? {}
+    : users.filter((user, index) => {
+        const isUserSelected = user.id === selectedUserId;
+        if (isUserSelected) {
+          selectedUserIndex = index;
+        }
+        return isUserSelected;
+      })[0];
 
   const leadingUsers = users
     .slice(0, 5)
@@ -34,7 +36,7 @@ const LeadersSlide = props => {
           { ...selectedUser, place: selectedUserIndex + 1 },
         ];
 
-  const renderedSelectedUser = (
+  const renderedSelectedUser = selectedUserId && (
     <div className='leaders__selected-user'>
       <UserCard
         className={cn('leaders__user-info', 'leaders__selected-user-info')}
