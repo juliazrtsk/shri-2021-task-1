@@ -12,26 +12,51 @@ import './style.css';
 const LeadersSlide = props => {
   const { title, subtitle, emoji, users, selectedUserId } = props;
 
-  const renderedUsers = users.slice(0, 5).map((user, index) => {
+  let selectedUserIndex = null;
+  const selectedUser = users.filter((user, index) => {
+    const isUserSelected = user.id === selectedUserId;
+    if (isUserSelected) {
+      selectedUserIndex = index;
+    }
+    return isUserSelected;
+  })[0];
+
+  const leadingUsers = users
+    .slice(0, 5)
+    .map((user, index) => ({ ...user, place: index + 1 }));
+
+  const leaders =
+    selectedUserIndex <= 4
+      ? leadingUsers
+      : [
+          ...leadingUsers.slice(0, 4),
+          { ...selectedUser, place: selectedUserIndex + 1 },
+        ];
+
+  const renderedUsers = leaders.map((user, index) => {
+    const { id, place } = user;
+    const isWinner = index === 0;
+    const isSelectedUser = id === selectedUserId;
+
     let userEmoji = null;
-    if (index === 0) {
+    if (isWinner) {
       userEmoji = emoji;
     } else {
-      if (user.id === selectedUserId) {
+      if (isSelectedUser) {
         userEmoji = voteEmoji;
       }
     }
     return (
       <div
         className={`leaders__user leaders__user_place_${index + 1}`}
-        key={`leaders_user_${index}`}
+        key={`leaders_user_${place}`}
       >
         <UserCard
           className='leaders__user-info'
           user={user}
           emoji={userEmoji}
         />
-        <PrizePodiumColumn place={index + 1} isWinner={index === 0} />
+        <PrizePodiumColumn place={place} isWinner={isWinner} />
       </div>
     );
   });
