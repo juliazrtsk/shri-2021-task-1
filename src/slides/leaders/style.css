@@ -18,6 +18,33 @@
   margin-bottom: 16px;
 }
 
+.leaders__selected-user {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 16px;
+}
+
+.leaders__selected-user-info {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.leaders__selected-user-info::after {
+  position: absolute;
+  bottom: -10px;
+  width: 60px;
+  height: 1px;
+  content: '';
+  background-color: var(--color-secondary_dark);
+}
+
+.leaders__selected-user-place {
+  color: var(--color-primary_dark);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 32px;
+}
+
 .leaders__user_place_1 {
   z-index: 3;
   grid-row: 1;

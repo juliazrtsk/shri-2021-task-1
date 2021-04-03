@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import SlideLayout from 'src/templates/slideLayout/SlideLayout';
 import UserCard from 'src/components/userCard/UserCard';
@@ -33,6 +34,19 @@ const LeadersSlide = props => {
           { ...selectedUser, place: selectedUserIndex + 1 },
         ];
 
+  const renderedSelectedUser = (
+    <div className='leaders__selected-user'>
+      <UserCard
+        className={cn('leaders__user-info', 'leaders__selected-user-info')}
+        user={selectedUser}
+        emoji={voteEmoji}
+      />
+      <div className='leaders__selected-user-place'>
+        {selectedUserIndex + 1}
+      </div>
+    </div>
+  );
+
   const renderedUsers = leaders.map((user, index) => {
     const { id, place } = user;
     const isWinner = index === 0;
@@ -57,6 +71,7 @@ const LeadersSlide = props => {
           emoji={userEmoji}
         />
         <PrizePodiumColumn place={place} isWinner={isWinner} />
+        {isWinner && !isSelectedUser && renderedSelectedUser}
       </div>
     );
   });
