@@ -15,7 +15,10 @@
 }
 
 .user-card__name {
+  max-width: 90%;
   margin-top: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-spacing: 500px;
   color: var(--color-primary_dark);
   font-weight: 500;
