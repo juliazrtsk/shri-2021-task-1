@@ -702,7 +702,7 @@
 
 .commits-category::after {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   height: 2px;
   width: 100%;
@@ -725,12 +725,14 @@
 
 .commits-category__marker_type_small {
   background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
-  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.5);
+  transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
 .commits-category__marker_type_medium {
   background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
-  box-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.5);
+  transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
 .commits-category__marker_type_large {
