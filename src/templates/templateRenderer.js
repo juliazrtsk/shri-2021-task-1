@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import LeadersSlide from 'src/slides/leaders/LeadersSlide';
@@ -9,11 +10,11 @@ import Activity from 'src/slides/activity/Activity';
 import { aliases } from 'src/constants/constants';
 
 const slideMap = {
-  [aliases.leaders]: data => LeadersSlide(data),
-  [aliases.vote]: data => VoteSlide(data),
-  [aliases.chart]: data => ChartSlide(data),
-  [aliases.diagram]: data => Diagram(data),
-  [aliases.activity]: data => Activity(data),
+  [aliases.leaders]: LeadersSlide,
+  [aliases.vote]: VoteSlide,
+  [aliases.chart]: ChartSlide,
+  [aliases.diagram]: Diagram,
+  [aliases.activity]: Activity,
 };
 
 window.renderTemplate = renderTemplate;
@@ -23,9 +24,9 @@ function renderTemplate(alias, data) {
     console.error('Incorrect data. Alias not found');
     return;
   }
-  const renderSlide = slideMap[alias];
-  const slide = renderSlide(data);
-  return ReactDOMServer.renderToString(slide);
+
+  const Slide = slideMap[alias];
+  return ReactDOMServer.renderToString(<Slide {...data} />);
 }
 
 export default renderTemplate;
