@@ -833,6 +833,9 @@ var server_browser = __webpack_require__(762);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
 var prop_types = __webpack_require__(697);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(184);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 ;// CONCATENATED MODULE: ./src/templates/slideLayout/SlideLayout.js
 
 
@@ -1005,9 +1008,6 @@ UserCard.defaultProps = {
   'data-params': ''
 };
 /* harmony default export */ const userCard_UserCard = (UserCard);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(184);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 ;// CONCATENATED MODULE: ./src/components/prizePodiumColumn/PrizePodiumColumn.js
 
 
@@ -1036,6 +1036,25 @@ PrizePodiumColumn.defaultProps = {
 };
 /* harmony default export */ const prizePodiumColumn_PrizePodiumColumn = (PrizePodiumColumn);
 ;// CONCATENATED MODULE: ./src/slides/leaders/LeadersSlide.js
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -1050,28 +1069,59 @@ var LeadersSlide = function LeadersSlide(props) {
       emoji = props.emoji,
       users = props.users,
       selectedUserId = props.selectedUserId;
-  var renderedUsers = users.slice(0, 5).map(function (user, index) {
+  var selectedUserIndex = null;
+  var selectedUser = users.filter(function (user, index) {
+    var isUserSelected = user.id === selectedUserId;
+
+    if (isUserSelected) {
+      selectedUserIndex = index;
+    }
+
+    return isUserSelected;
+  })[0];
+  var leadingUsers = users.slice(0, 5).map(function (user, index) {
+    return _objectSpread(_objectSpread({}, user), {}, {
+      place: index + 1
+    });
+  });
+  var leaders = selectedUserIndex <= 4 ? leadingUsers : [].concat(_toConsumableArray(leadingUsers.slice(0, 4)), [_objectSpread(_objectSpread({}, selectedUser), {}, {
+    place: selectedUserIndex + 1
+  })]);
+  var renderedSelectedUser = /*#__PURE__*/react.createElement("div", {
+    className: "leaders__selected-user"
+  }, /*#__PURE__*/react.createElement(userCard_UserCard, {
+    className: classnames_default()('leaders__user-info', 'leaders__selected-user-info'),
+    user: selectedUser,
+    emoji: voteEmoji
+  }), /*#__PURE__*/react.createElement("div", {
+    className: "leaders__selected-user-place"
+  }, selectedUserIndex + 1));
+  var renderedUsers = leaders.map(function (user, index) {
+    var id = user.id,
+        place = user.place;
+    var isWinner = index === 0;
+    var isSelectedUser = id === selectedUserId;
     var userEmoji = null;
 
-    if (index === 0) {
+    if (isWinner) {
       userEmoji = emoji;
     } else {
-      if (user.id === selectedUserId) {
+      if (isSelectedUser) {
         userEmoji = voteEmoji;
       }
     }
 
     return /*#__PURE__*/react.createElement("div", {
       className: "leaders__user leaders__user_place_".concat(index + 1),
-      key: "leaders_user_".concat(index)
+      key: "leaders_user_".concat(place)
     }, /*#__PURE__*/react.createElement(userCard_UserCard, {
       className: "leaders__user-info",
       user: user,
       emoji: userEmoji
     }), /*#__PURE__*/react.createElement(prizePodiumColumn_PrizePodiumColumn, {
-      place: index + 1,
-      isWinner: index === 0
-    }));
+      place: place,
+      isWinner: isWinner
+    }), isWinner && !isSelectedUser && selectedUserIndex > 2 && renderedSelectedUser);
   });
   return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
     title: title,
@@ -1145,17 +1195,6 @@ var getSettings = function getSettings() {
   var params = new URLSearchParams(window.location.search);
   var slide = params.get('slide') || 1;
   var theme = params.get('theme') || defaultTheme;
-  /*  let theme;
-  const storiesContainer = document.getElementById('stories');
-  if (storiesContainer) {
-    const themeClass = Array.from(storiesContainer.classList).filter(c =>
-      c.startsWith('theme_')
-    )[0];
-    theme = themeClass ? themeClass.replace('theme_', '') : defaultTheme;
-  } else {
-    theme = defaultTheme;
-  }*/
-
   return {
     slide: slide,
     theme: theme
@@ -1167,19 +1206,7 @@ var getScreenOrientation = function getScreenOrientation() {
   } else return screenOrientation.horizontal;
 };
 ;// CONCATENATED MODULE: ./src/slides/vote/VoteSlide.js
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function VoteSlide_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -1203,12 +1230,6 @@ var VoteSlide = function VoteSlide(props) {
       users = props.users,
       offset = props.offset,
       selectedUserId = props.selectedUserId;
-
-  var _React$useState = react.useState(0),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      stepp = _React$useState2[0],
-      setStep = _React$useState2[1];
-
   var step = offsetStep[getScreenOrientation()];
   var startIndex = 0;
 
@@ -1237,7 +1258,7 @@ var VoteSlide = function VoteSlide(props) {
       })
     });
   });
-  var isButtonDisabled = (_isButtonDisabled = {}, _defineProperty(_isButtonDisabled, arrowButtonDirections.up, startIndex < step), _defineProperty(_isButtonDisabled, arrowButtonDirections.down, startIndex + step >= users.length), _isButtonDisabled);
+  var isButtonDisabled = (_isButtonDisabled = {}, VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.up, startIndex < step), VoteSlide_defineProperty(_isButtonDisabled, arrowButtonDirections.down, startIndex + step >= users.length), _isButtonDisabled);
 
   var renderButton = function renderButton(dir, startUserId) {
     return /*#__PURE__*/react.createElement(arrowButton_ArrowButton, {
@@ -1344,18 +1365,6 @@ Bar.defaultProps = {
 };
 /* harmony default export */ const bar_Bar = (Bar);
 ;// CONCATENATED MODULE: ./src/slides/chart/ChartSlide.js
-function ChartSlide_slicedToArray(arr, i) { return ChartSlide_arrayWithHoles(arr) || ChartSlide_iterableToArrayLimit(arr, i) || ChartSlide_unsupportedIterableToArray(arr, i) || ChartSlide_nonIterableRest(); }
-
-function ChartSlide_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function ChartSlide_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ChartSlide_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ChartSlide_arrayLikeToArray(o, minLen); }
-
-function ChartSlide_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ChartSlide_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function ChartSlide_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -1375,66 +1384,42 @@ var ChartSlide = function ChartSlide(props) {
       subtitle = props.subtitle,
       values = props.values,
       users = props.users;
-  var barsRef = (0,react.useRef)(null);
-
-  var _useState = (0,react.useState)(0),
-      _useState2 = ChartSlide_slicedToArray(_useState, 2),
-      upperBound = _useState2[0],
-      setUpperBound = _useState2[1];
-
-  debugger;
-  var scrollToRight = (0,react.useCallback)(function () {
-    if (barsRef.current) {
-      console.log(barsRef.current);
-    }
-  }, [barsRef]);
-  react.useEffect(function () {
-    scrollToRight();
-  }, []);
-  react.useEffect(function () {
-    debugger;
-    var max = values.reduce(function (acc, cur) {
-      return acc > cur.value ? acc : cur.value;
+  var maxValue = values.reduce(function (acc, cur) {
+    return acc > cur.value ? acc : cur.value;
+  });
+  var upperBound = getUpperBound(maxValue);
+  var renderedBars = values.slice(4, values.length - 3).map(function (bar, index) {
+    return /*#__PURE__*/react.createElement(bar_Bar, {
+      className: classnames_default()('chart__bar', {
+        chart__bar_active: bar.active
+      }),
+      key: "".concat(title, "_").concat(index),
+      value: {
+        text: bar.value,
+        percentage: (bar.value / upperBound * 70).toFixed(2)
+      },
+      description: bar.title
     });
-    setUpperBound(getUpperBound(max));
-  }, [values]);
-  var renderBars = (0,react.useCallback)(function () {
-    return values.slice(4, values.length - 3).map(function (bar, index) {
-      return /*#__PURE__*/react.createElement(bar_Bar, {
-        className: classnames_default()('chart__bar', {
-          chart__bar_active: bar.active
-        }),
-        key: "".concat(title, "_").concat(index),
-        value: {
-          text: bar.value,
-          percentage: (bar.value / upperBound * 70).toFixed(2)
-        },
-        description: bar.title
-      });
+  });
+  var renderedLeaders = users.slice(0, 2).map(function (user, index) {
+    return /*#__PURE__*/react.createElement(userCard_UserCard, {
+      key: "chart_leader_".concat(index),
+      className: "chart__user",
+      user: user,
+      size: userCardSizes.s,
+      showDetails: true
     });
-  }, [values, title, upperBound]);
-  var renderLeaders = (0,react.useCallback)(function () {
-    return users.slice(0, 2).map(function (user, index) {
-      return /*#__PURE__*/react.createElement(userCard_UserCard, {
-        key: "chart_leader_".concat(index),
-        className: "chart__user",
-        user: user,
-        size: userCardSizes.s,
-        showDetails: true
-      });
-    });
-  }, [users]);
+  });
   return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
     title: title,
     subtitle: subtitle
   }, /*#__PURE__*/react.createElement("div", {
     className: "chart"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "chart__bars",
-    ref: barsRef
-  }, renderBars()), /*#__PURE__*/react.createElement("div", {
+    className: "chart__bars"
+  }, renderedBars), /*#__PURE__*/react.createElement("div", {
     className: "chart__leaders"
-  }, renderLeaders())));
+  }, renderedLeaders)));
 };
 
 ChartSlide.propTypes = {
@@ -1570,21 +1555,21 @@ Diagram.defaultProps = {
 };
 /* harmony default export */ const diagram_Diagram = (Diagram);
 ;// CONCATENATED MODULE: ./src/slides/activity/Activity.js
-function Activity_slicedToArray(arr, i) { return Activity_arrayWithHoles(arr) || Activity_iterableToArrayLimit(arr, i) || Activity_unsupportedIterableToArray(arr, i) || Activity_nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || Activity_unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function Activity_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function Activity_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Activity_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Activity_arrayLikeToArray(o, minLen); }
 
 function Activity_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function Activity_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function Activity_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function Activity_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Activity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function Activity_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Activity_ownKeys(Object(source), true).forEach(function (key) { Activity_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Activity_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function Activity_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -1622,7 +1607,7 @@ var sumCommitsForTwoHours = function sumCommitsForTwoHours(hours) {
 var horizontalPreparation = function horizontalPreparation(data) {
   var days = Object.keys(data);
   return days.reduce(function (acc, day) {
-    return _objectSpread(_objectSpread({}, acc), {}, Activity_defineProperty({}, day, sumCommitsForTwoHours(data[day])));
+    return Activity_objectSpread(Activity_objectSpread({}, acc), {}, Activity_defineProperty({}, day, sumCommitsForTwoHours(data[day])));
   }, {});
 };
 
@@ -1645,11 +1630,11 @@ var verticalPreparation = function verticalPreparation(data) {
     var _objectSpread3;
 
     var _splitDayOnTwoHalves = splitDayOnTwoHalves(data[day]),
-        _splitDayOnTwoHalves2 = Activity_slicedToArray(_splitDayOnTwoHalves, 2),
+        _splitDayOnTwoHalves2 = _slicedToArray(_splitDayOnTwoHalves, 2),
         first = _splitDayOnTwoHalves2[0],
         second = _splitDayOnTwoHalves2[1];
 
-    return _objectSpread(_objectSpread({}, acc), {}, (_objectSpread3 = {}, Activity_defineProperty(_objectSpread3, "".concat(day, "_1"), first), Activity_defineProperty(_objectSpread3, "".concat(day, "_2"), second), _objectSpread3));
+    return Activity_objectSpread(Activity_objectSpread({}, acc), {}, (_objectSpread3 = {}, Activity_defineProperty(_objectSpread3, "".concat(day, "_1"), first), Activity_defineProperty(_objectSpread3, "".concat(day, "_2"), second), _objectSpread3));
   }, {});
 };
 
@@ -1854,7 +1839,6 @@ var App = function App() {
   }, []);
   (0,react.useEffect)(function () {
     if (slidesData) {
-      // Тут падаем, если slide > нужного
       var _slidesData = slidesData[slide - 1],
           alias = _slidesData.alias,
           data = _slidesData.data;
@@ -1863,7 +1847,6 @@ var App = function App() {
     }
   }, [slidesData, slide]);
   return /*#__PURE__*/react.createElement("div", {
-    id: "stories",
     className: "stories ".concat(themes[theme] || themes.dark),
     dangerouslySetInnerHTML: {
       __html: slideMarkup
