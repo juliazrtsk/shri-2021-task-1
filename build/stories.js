@@ -923,6 +923,7 @@ var themes = {
   light: 'theme_light',
   dark: 'theme_dark'
 };
+var defaultTheme = 'dark';
 var aliases = {
   leaders: 'leaders',
   vote: 'vote',
@@ -1143,7 +1144,18 @@ ArrowButton.defaultProps = {
 var getSettings = function getSettings() {
   var params = new URLSearchParams(window.location.search);
   var slide = params.get('slide') || 1;
-  var theme = params.get('theme') || 'dark';
+  var theme = params.get('theme') || defaultTheme;
+  /*  let theme;
+  const storiesContainer = document.getElementById('stories');
+  if (storiesContainer) {
+    const themeClass = Array.from(storiesContainer.classList).filter(c =>
+      c.startsWith('theme_')
+    )[0];
+    theme = themeClass ? themeClass.replace('theme_', '') : defaultTheme;
+  } else {
+    theme = defaultTheme;
+  }*/
+
   return {
     slide: slide,
     theme: theme
@@ -1156,6 +1168,18 @@ var getScreenOrientation = function getScreenOrientation() {
 };
 ;// CONCATENATED MODULE: ./src/slides/vote/VoteSlide.js
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -1179,6 +1203,12 @@ var VoteSlide = function VoteSlide(props) {
       users = props.users,
       offset = props.offset,
       selectedUserId = props.selectedUserId;
+
+  var _React$useState = react.useState(0),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      stepp = _React$useState2[0],
+      setStep = _React$useState2[1];
+
   var step = offsetStep[getScreenOrientation()];
   var startIndex = 0;
 
@@ -1314,6 +1344,18 @@ Bar.defaultProps = {
 };
 /* harmony default export */ const bar_Bar = (Bar);
 ;// CONCATENATED MODULE: ./src/slides/chart/ChartSlide.js
+function ChartSlide_slicedToArray(arr, i) { return ChartSlide_arrayWithHoles(arr) || ChartSlide_iterableToArrayLimit(arr, i) || ChartSlide_unsupportedIterableToArray(arr, i) || ChartSlide_nonIterableRest(); }
+
+function ChartSlide_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function ChartSlide_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ChartSlide_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ChartSlide_arrayLikeToArray(o, minLen); }
+
+function ChartSlide_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ChartSlide_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function ChartSlide_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1333,42 +1375,66 @@ var ChartSlide = function ChartSlide(props) {
       subtitle = props.subtitle,
       values = props.values,
       users = props.users;
-  var maxValue = values.reduce(function (acc, cur) {
-    return acc > cur.value ? acc : cur.value;
-  });
-  var upperBound = getUpperBound(maxValue);
-  var renderedBars = values.slice(4, values.length - 3).map(function (bar, index) {
-    return /*#__PURE__*/react.createElement(bar_Bar, {
-      className: classnames_default()('chart__bar', {
-        chart__bar_active: bar.active
-      }),
-      key: "".concat(title, "_").concat(index),
-      value: {
-        text: bar.value,
-        percentage: (bar.value / upperBound * 70).toFixed(2)
-      },
-      description: bar.title
+  var barsRef = (0,react.useRef)(null);
+
+  var _useState = (0,react.useState)(0),
+      _useState2 = ChartSlide_slicedToArray(_useState, 2),
+      upperBound = _useState2[0],
+      setUpperBound = _useState2[1];
+
+  debugger;
+  var scrollToRight = (0,react.useCallback)(function () {
+    if (barsRef.current) {
+      console.log(barsRef.current);
+    }
+  }, [barsRef]);
+  react.useEffect(function () {
+    scrollToRight();
+  }, []);
+  react.useEffect(function () {
+    debugger;
+    var max = values.reduce(function (acc, cur) {
+      return acc > cur.value ? acc : cur.value;
     });
-  });
-  var renderedLeaders = users.slice(0, 2).map(function (user, index) {
-    return /*#__PURE__*/react.createElement(userCard_UserCard, {
-      key: "chart_leader_".concat(index),
-      className: "chart__user",
-      user: user,
-      size: userCardSizes.s,
-      showDetails: true
+    setUpperBound(getUpperBound(max));
+  }, [values]);
+  var renderBars = (0,react.useCallback)(function () {
+    return values.slice(4, values.length - 3).map(function (bar, index) {
+      return /*#__PURE__*/react.createElement(bar_Bar, {
+        className: classnames_default()('chart__bar', {
+          chart__bar_active: bar.active
+        }),
+        key: "".concat(title, "_").concat(index),
+        value: {
+          text: bar.value,
+          percentage: (bar.value / upperBound * 70).toFixed(2)
+        },
+        description: bar.title
+      });
     });
-  });
+  }, [values, title, upperBound]);
+  var renderLeaders = (0,react.useCallback)(function () {
+    return users.slice(0, 2).map(function (user, index) {
+      return /*#__PURE__*/react.createElement(userCard_UserCard, {
+        key: "chart_leader_".concat(index),
+        className: "chart__user",
+        user: user,
+        size: userCardSizes.s,
+        showDetails: true
+      });
+    });
+  }, [users]);
   return /*#__PURE__*/react.createElement(slideLayout_SlideLayout, {
     title: title,
     subtitle: subtitle
   }, /*#__PURE__*/react.createElement("div", {
     className: "chart"
   }, /*#__PURE__*/react.createElement("div", {
-    className: "chart__bars"
-  }, renderedBars), /*#__PURE__*/react.createElement("div", {
+    className: "chart__bars",
+    ref: barsRef
+  }, renderBars()), /*#__PURE__*/react.createElement("div", {
     className: "chart__leaders"
-  }, renderedLeaders)));
+  }, renderLeaders())));
 };
 
 ChartSlide.propTypes = {
@@ -1504,17 +1570,17 @@ Diagram.defaultProps = {
 };
 /* harmony default export */ const diagram_Diagram = (Diagram);
 ;// CONCATENATED MODULE: ./src/slides/activity/Activity.js
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function Activity_slicedToArray(arr, i) { return Activity_arrayWithHoles(arr) || Activity_iterableToArrayLimit(arr, i) || Activity_unsupportedIterableToArray(arr, i) || Activity_nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function Activity_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function Activity_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Activity_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Activity_arrayLikeToArray(o, minLen); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function Activity_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function Activity_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function Activity_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -1579,7 +1645,7 @@ var verticalPreparation = function verticalPreparation(data) {
     var _objectSpread3;
 
     var _splitDayOnTwoHalves = splitDayOnTwoHalves(data[day]),
-        _splitDayOnTwoHalves2 = _slicedToArray(_splitDayOnTwoHalves, 2),
+        _splitDayOnTwoHalves2 = Activity_slicedToArray(_splitDayOnTwoHalves, 2),
         first = _splitDayOnTwoHalves2[0],
         second = _splitDayOnTwoHalves2[1];
 
@@ -1595,25 +1661,11 @@ var dataPreparators = {
     return horizontalPreparation(data);
   }
 };
-var bars = {
-  min_dark: './images/min-dark.svg',
-  mid_dark: './images/mid-dark.svg',
-  max_dark: './images/max-dark.svg',
-  extra_dark: './images/extra-dark.svg',
-  min_light: './images/min-light.svg',
-  mid_light: './images/mid-light.svg',
-  max_light: './images/max-light.svg',
-  extra_light: './images/extra-light.svg'
-};
 
 var Activity = function Activity(props) {
   var title = props.title,
       subtitle = props.subtitle,
       data = props.data;
-
-  var _getSettings = getSettings(),
-      theme = _getSettings.theme;
-
   var orientation = getScreenOrientation();
   var renderedLegend = Object.keys(commitLegendBounds).map(function (key, index) {
     var bounds = commitLegendBounds[key] || [];
@@ -1649,11 +1701,9 @@ var Activity = function Activity(props) {
         type = 'extra';
       }
 
-      return /*#__PURE__*/react.createElement("img", {
+      return /*#__PURE__*/react.createElement("div", {
         key: "activity_bar_".concat(index),
-        className: "activity__bar",
-        src: bars["".concat(type, "_").concat(theme)],
-        alt: type
+        className: classnames_default()('activity__bar', "activity__bar_".concat(type))
       });
     });
   };
@@ -1772,21 +1822,30 @@ function App_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var App = function App() {
-  var _getSettings = getSettings(),
-      slide = _getSettings.slide,
-      theme = _getSettings.theme;
-
-  var _useState = (0,react.useState)(null),
+  var _useState = (0,react.useState)(1),
       _useState2 = App_slicedToArray(_useState, 2),
-      slidesData = _useState2[0],
-      setSlidesData = _useState2[1];
+      slide = _useState2[0],
+      setSlide = _useState2[1];
 
-  var _useState3 = (0,react.useState)(null),
+  var _useState3 = (0,react.useState)('light'),
       _useState4 = App_slicedToArray(_useState3, 2),
-      slideMarkup = _useState4[0],
-      setSlideMarkup = _useState4[1];
+      theme = _useState4[0],
+      setTheme = _useState4[1];
+
+  var _useState5 = (0,react.useState)(null),
+      _useState6 = App_slicedToArray(_useState5, 2),
+      slidesData = _useState6[0],
+      setSlidesData = _useState6[1];
+
+  var _useState7 = (0,react.useState)(null),
+      _useState8 = App_slicedToArray(_useState7, 2),
+      slideMarkup = _useState8[0],
+      setSlideMarkup = _useState8[1];
 
   (0,react.useEffect)(function () {
+    var settings = getSettings();
+    setSlide(settings.slide);
+    setTheme(settings.theme);
     fetch('./data.json').then(function (response) {
       return response.json();
     }).then(function (data) {
@@ -1795,6 +1854,7 @@ var App = function App() {
   }, []);
   (0,react.useEffect)(function () {
     if (slidesData) {
+      // Тут падаем, если slide > нужного
       var _slidesData = slidesData[slide - 1],
           alias = _slidesData.alias,
           data = _slidesData.data;
@@ -1803,6 +1863,7 @@ var App = function App() {
     }
   }, [slidesData, slide]);
   return /*#__PURE__*/react.createElement("div", {
+    id: "stories",
     className: "stories ".concat(themes[theme] || themes.dark),
     dangerouslySetInnerHTML: {
       __html: slideMarkup

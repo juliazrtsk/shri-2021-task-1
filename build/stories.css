@@ -635,7 +635,7 @@
 
   .chart__bars {
     overflow-x: scroll;
-    padding: 0 24px;
+    padding-left: 12px;
   }
 
   .chart__bar {
@@ -672,7 +672,7 @@
 
   .chart__user::before {
     left: 0;
-    top: -17px;
+    top: -18px;
     height: 2px;
     width: 100%;
   }
@@ -889,6 +889,39 @@
 
 .activity__bar {
   width: 34px;
+  height: 74px;
+}
+
+.activity__bar_min {
+  background: url(/images/min-dark.svg) no-repeat bottom;
+}
+
+.activity__bar_mid {
+  background: url(/images/mid-dark.svg) no-repeat bottom;
+}
+
+.activity__bar_max {
+  background: url(/images/max-dark.svg) no-repeat bottom;
+}
+
+.activity__bar_extra {
+  background: url(/images/extra-dark.svg) no-repeat bottom;
+}
+
+.theme_light .activity__bar_min {
+  background: url(/images/min-light.svg) no-repeat bottom;
+}
+
+.theme_light  .activity__bar_mid {
+  background: url(/images/mid-light.svg) no-repeat bottom;
+}
+
+.theme_light  .activity__bar_max {
+  background: url(/images/max-light.svg) no-repeat bottom;
+}
+
+.theme_light  .activity__bar_extra {
+  background: url(/images/extra-light.svg) no-repeat bottom;
 }
 
 .activity__day {
@@ -910,7 +943,7 @@
   grid-template: auto auto / repeat(5, 1fr);
   grid-column-gap: 8px;
   box-sizing: border-box;
-  padding: 0 46px;
+  padding: 0 48px;
 }
 
 .activity__legend-item {
@@ -1013,9 +1046,15 @@
   color: var(--color-secondary_light);
 }
 
+@media (max-width: 570px) and (orientation: landscape) {
+  .activity {
+    padding: 15px 120px 58px;
+  }
+}
+
 @media (orientation: portrait) {
   .activity {
-    padding: 0 0 24px;
+    padding: 0 24px 24px;
     grid-template: auto auto / auto;
     grid-row-gap: 32px;
     height: 100%;
@@ -1027,8 +1066,13 @@
     height: 408px;
   }
 
+  .activity__bar {
+    width: 44px;
+    height: 95px;
+  }
+
   .activity__legend {
-    padding: 0 24px;
+    padding: 0;
   }
 
   .activity__legend-value {
