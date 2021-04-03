@@ -39,7 +39,7 @@ const VoteSlide = props => {
       })}
       key={`vote_user_${index}`}
       user={user}
-      emoji={user.id === selectedUserId && voteEmoji}
+      emoji={user.id === selectedUserId ? voteEmoji : ''}
       showDetails={false}
       data-action='update'
       data-params={JSON.stringify({
@@ -102,7 +102,7 @@ VoteSlide.propTypes = {
   emoji: PropTypes.string,
   users: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       name: PropTypes.string,
       avatar: PropTypes.string,
       valueText: PropTypes.string,

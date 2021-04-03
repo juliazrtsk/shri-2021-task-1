@@ -49,7 +49,7 @@ LeadersSlide.propTypes = {
   emoji: PropTypes.string,
   users: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       name: PropTypes.string,
       avatar: PropTypes.string,
       valueText: PropTypes.string,
