@@ -22,35 +22,39 @@
 }
 
 .activity__bar_min {
-  background: url('~images/activity_bars/min-dark.svg') no-repeat bottom;
+  background: url('~images/activity-bars-sprite.svg#min-dark-usage') no-repeat bottom;
+  background-size: 34px 34px;
 }
 
 .activity__bar_mid {
-  background: url('~images/activity_bars/mid-dark.svg') no-repeat bottom;
+  background: url('~images/activity-bars-sprite.svg#mid-dark-usage') no-repeat bottom;
+  background-size: 34px 42px;
 }
 
 .activity__bar_max {
-  background: url('~images/activity_bars/max-dark.svg') no-repeat bottom;
+  background: url('~images/activity-bars-sprite.svg#max-dark-usage') no-repeat bottom;
+  background-size: 34px 58px;
 }
 
 .activity__bar_extra {
-  background: url('~images/activity_bars/extra-dark.svg') no-repeat bottom;
+  background: url('~images/activity-bars-sprite.svg#extra-dark-usage') no-repeat bottom;
+  background-size: 34px 74px;
 }
 
 .theme_light .activity__bar_min {
-  background: url('~images/activity_bars/min-light.svg') no-repeat bottom;
+  background-image: url('~images/activity-bars-sprite.svg#min-light-usage');
 }
 
 .theme_light .activity__bar_mid {
-  background: url('~images/activity_bars/mid-light.svg') no-repeat bottom;
+  background-image: url('~images/activity-bars-sprite.svg#mid-light-usage');
 }
 
 .theme_light .activity__bar_max {
-  background: url('~images/activity_bars/max-light.svg') no-repeat bottom;
+  background-image: url('~images/activity-bars-sprite.svg#max-light-usage');
 }
 
 .theme_light .activity__bar_extra {
-  background: url('~images/activity_bars/extra-light.svg') no-repeat bottom;
+  background-image: url('~images/activity-bars-sprite.svg#extra-light-usage');
 }
 
 .activity__day {
@@ -177,7 +181,7 @@
 
 @media (max-width: 570px) and (orientation: landscape) {
   .activity {
-    padding: 15px 120px 58px;
+    padding: 15px 70px 58px;
   }
 }
 
